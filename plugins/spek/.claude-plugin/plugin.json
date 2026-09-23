@@ -1,0 +1,21 @@
+{
+  "name": "spek",
+  "displayName": "Spec-Driven Development",
+  "version": "0.6.0",
+  "description": "SDD for the code you already have: extract a baseline from existing code, then constitution, specify, clarify, plan, tasks, implement and verify -- brownfield first, greenfield fully preserved.",
+  "author": {
+    "name": "Thiago Montini",
+    "email": "thiagomontini@gmail.com"
+  },
+  "homepage": "https://github.com/Digital-Republic-AI/spek-plugin",
+  "repository": "https://github.com/Digital-Republic-AI/spek-plugin",
+  "license": "MIT",
+  "keywords": [
+    "spec-driven-development",
+    "sdd",
+    "planning",
+    "workflow",
+    "specify",
+    "tasks"
+  ]
+}

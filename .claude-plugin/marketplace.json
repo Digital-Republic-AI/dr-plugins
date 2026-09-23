@@ -1,0 +1,25 @@
+{
+  "name": "dr-plugins",
+  "owner": {
+    "name": "Digital Republic",
+    "email": "dev@digitalrepublic.com.br"
+  },
+  "metadata": {
+    "description": "Digital Republic plugins for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "spek",
+      "description": "Spec-driven development for Claude Code, built for the code you already have: extract a baseline from existing code, specify with explicit scope boundaries, plan, break into tasks, implement and verify against both the spec and the baseline. Greenfield flow fully supported.",
+      "version": "0.6.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./plugins/spek",
+      "category": "development",
+      "keywords": ["spec-driven-development", "sdd", "brownfield", "planning", "workflow", "specify", "tasks"]
+    }
+  ]
+}

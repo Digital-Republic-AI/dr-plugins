@@ -1,0 +1,8 @@
+# DR_AI local artifacts
+.dr_ai/settings.json
+.dr_ai/docs/RULES.md
+.dr_ai/research/
+.dr_ai/tasks/
+.dr_ai/logs/
+.DS_Store
+tasks.json
