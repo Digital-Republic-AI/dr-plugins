@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:report:1",
+  "title": "C4 Codebase Diagram Report Manifest",
+  "description": "Input of render-report.py: the title, introduction, and one entry per rendered SVG diagram, written by the agent in the published language. Text fields are plain text; blank lines separate paragraphs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "diagrams"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})*$"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "string"
+    },
+    "diagrams": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "title",
+          "description"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "pattern": "^[^/\\\\]+\\.svg$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "documents": {
+      "description": "Files embedded after the diagrams, in reading order; paths relative to the diagrams directory. Markdown is converted to HTML, other text files become code blocks.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "file",
+          "title"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kicker": { "type": "string" },
+        "intro": { "type": "string" },
+        "skip": { "type": "string" },
+        "repository": { "type": "string" },
+        "revision": { "type": "string" },
+        "generated": { "type": "string" },
+        "diagrams": { "type": "string" },
+        "documents": { "type": "string" },
+        "fit": { "type": "string" },
+        "actual": { "type": "string" },
+        "fullscreen": { "type": "string" },
+        "download": { "type": "string" },
+        "legend": { "type": "string" },
+        "footer": { "type": "string" }
+      }
+    }
+  }
+}

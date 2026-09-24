@@ -1,0 +1,26 @@
+C4 Codebase Skill
+Copyright (c) 2026 Thiago Montini
+Licensed under the MIT License. See LICENSE.
+
+This project is a new synthesis. It reuses workflow concepts from the
+projects below; it does not bundle them or depend on them at runtime.
+Licenses were checked through the GitHub API on 2026-09-14.
+
+- github/awesome-copilot: skills/acquire-codebase-knowledge and
+  skills/architecture-blueprint-generator
+  https://github.com/github/awesome-copilot
+  License: MIT
+
+- lmammino/c4-codebase-architecture-skill
+  https://github.com/lmammino/c4-codebase-architecture-skill
+  License: MIT
+
+- bitsmuggler/c4-skill
+  https://github.com/bitsmuggler/c4-skill
+  License: none detected. Used only as a conceptual reference; no text or
+  code from this repository is included. Do not copy material from it
+  without the author's permission.
+
+If text or code from an MIT-licensed source above is ever copied into this
+project, keep that source's copyright and permission notice with the copied
+material, as the MIT License requires.

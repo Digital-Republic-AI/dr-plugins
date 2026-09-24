@@ -20,6 +20,23 @@
       "source": "./plugins/spek",
       "category": "development",
       "keywords": ["spec-driven-development", "sdd", "brownfield", "planning", "workflow", "specify", "tasks"]
+    },
+    {
+      "name": "c4-codebase",
+      "description": "Reverse-engineers an existing codebase into evidence-backed architecture documentation and a canonical C4 Structurizr DSL model, with resumable state across sessions. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/c4-codebase"],
+      "homepage": "https://github.com/Digital-Republic-AI/c4-codebase-skill",
+      "repository": "https://github.com/Digital-Republic-AI/c4-codebase-skill",
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["c4", "structurizr", "architecture", "reverse-engineering", "documentation", "diagrams", "skill"]
     }
   ]
 }

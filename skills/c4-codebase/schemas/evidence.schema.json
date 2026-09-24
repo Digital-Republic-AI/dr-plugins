@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:evidence:2",
+  "title": "C4 Codebase Evidence Record",
+  "description": "One line of evidence.jsonl. Evidence is immutable and ids are unique: a correction is a new record whose supersedes field names the corrected record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "observation",
+    "repositoryRevision",
+    "dirty",
+    "capturedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^ev-[0-9]{3,}$"
+    },
+    "kind": {
+      "enum": [
+        "source",
+        "config",
+        "deployment",
+        "documentation",
+        "command",
+        "tool",
+        "git",
+        "user_confirmation"
+      ]
+    },
+    "intent": {
+      "description": "True when a documentation record states intended behavior rather than implementation reality.",
+      "type": "boolean"
+    },
+    "path": {
+      "description": "POSIX path relative to the repository root.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(?![/\\\\])(?![A-Za-z]:)(?!(.*/)?\\.\\.(/|$)).+$"
+    },
+    "lines": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]+(-[0-9]+)?$"
+    },
+    "command": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observation": {
+      "description": "Atomic observation. Never include secret values; record key names and paths only.",
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "questionId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^q-[0-9]{3,}$"
+    },
+    "repositoryRevision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dirty": {
+      "description": "True when the working tree had uncommitted changes; null when the repository is not a git repository.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "fingerprint": {
+      "description": "First 16 hex characters of the SHA-256 of the file at capture time.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{16}$"
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^ev-[0-9]{3,}$"
+    },
+    "capturedAt": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "source",
+              "config",
+              "deployment",
+              "documentation"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "command"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "command"
+        ],
+        "properties": {
+          "command": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "intent"
+        ],
+        "properties": {
+          "intent": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "documentation"
+          }
+        }
+      }
+    }
+  ]
+}

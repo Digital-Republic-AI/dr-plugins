@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:question:2",
+  "title": "C4 Codebase Question Record",
+  "description": "One line of questions.jsonl. questions.md is rendered from this ledger. Append-only: answering or dismissing appends a new revision with the same id; the latest line for an id is its current state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "question",
+    "impact",
+    "status",
+    "recordedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^q-[0-9]{3,}$"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "impact": {
+      "enum": [
+        "scope",
+        "system_boundary",
+        "actors",
+        "runtime_topology",
+        "dependency_ownership",
+        "dynamic_loading",
+        "audience_detail"
+      ]
+    },
+    "status": {
+      "enum": [
+        "open",
+        "answered",
+        "dismissed"
+      ]
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hypothesisIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^hyp-[0-9]{3,}$"
+      }
+    },
+    "answer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "answerEvidence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^ev-[0-9]{3,}$"
+    },
+    "dismissalReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^q-[0-9]{3,}$"
+    },
+    "recordedAt": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "answered"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "answer",
+          "answerEvidence"
+        ],
+        "properties": {
+          "answer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "answerEvidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "dismissed"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "dismissalReason"
+        ],
+        "properties": {
+          "dismissalReason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

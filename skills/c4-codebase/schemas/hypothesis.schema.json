@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:hypothesis:2",
+  "title": "C4 Codebase Hypothesis Record",
+  "description": "One line of hypotheses.jsonl. Append-only: a status or confidence change is a new revision with the same id and the same claim; a different claim is a new id whose supersedes field names the replaced hypothesis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "claim",
+    "evidence",
+    "confidence",
+    "status",
+    "recordedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^hyp-[0-9]{3,}$"
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^ev-[0-9]{3,}$"
+      }
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "status": {
+      "enum": [
+        "inferred",
+        "confirmed",
+        "rejected"
+      ]
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reachability": {
+      "anyOf": [
+        {
+          "enum": [
+            "active",
+            "likely_active",
+            "uncertain",
+            "test_build_tooling",
+            "generated_vendor",
+            "suspected_dead",
+            "obsolete_confirmed"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "questionIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^q-[0-9]{3,}$"
+      }
+    },
+    "supersedes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^hyp-[0-9]{3,}$"
+    },
+    "recordedAt": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

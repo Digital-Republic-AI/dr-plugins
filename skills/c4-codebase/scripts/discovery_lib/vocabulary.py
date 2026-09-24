@@ -1,0 +1,51 @@
+STATE_SCHEMA = "state"
+EVIDENCE_SCHEMA = "evidence"
+HYPOTHESIS_SCHEMA = "hypothesis"
+QUESTION_SCHEMA = "question"
+CHECKPOINT_SCHEMA = "checkpoint"
+
+STATUS_PENDING = "pending"
+STATUS_IN_PROGRESS = "in_progress"
+STATUS_BLOCKED = "blocked"
+STATUS_COMPLETE = "complete"
+STATUS_INVALIDATED = "invalidated"
+SETTABLE_STATUSES = (STATUS_PENDING, STATUS_IN_PROGRESS, STATUS_BLOCKED, STATUS_COMPLETE)
+
+PHASE_COMPLETE = "complete"
+PHASE_PARTITIONING = "partitioning"
+PHASE_INVESTIGATION = "investigation"
+PHASE_CLASSIFICATION = "classification"
+PHASE_VALIDATION = "validation"
+PHASE_PUBLICATION = "publication"
+
+UNIT_TYPE_OTHER = "other"
+
+HYPOTHESIS_INFERRED = "inferred"
+HYPOTHESIS_CONFIRMED = "confirmed"
+HYPOTHESIS_REJECTED = "rejected"
+
+LABEL_OBSERVED = "observed"
+LABEL_INFERRED = "inferred"
+LABEL_CONFIRMED = "confirmed"
+LABEL_ASK_USER = "ASK USER"
+
+QUESTION_OPEN = "open"
+QUESTION_ANSWERED = "answered"
+QUESTION_DISMISSED = "dismissed"
+
+KIND_DOCUMENTATION = "documentation"
+KIND_USER_CONFIRMATION = "user_confirmation"
+PATH_REQUIRED_KINDS = ("source", "config", "deployment", "documentation")
+CONFIRMING_KINDS = (KIND_USER_CONFIRMATION, KIND_DOCUMENTATION)
+
+PUBLICATION_ABSENT = "absent"
+PUBLICATION_GENERATED = "skill_generated"
+PUBLICATION_TEMPLATE = "skill_template"
+PUBLICATION_FOREIGN = "foreign"
+
+NEXT_INITIALIZE = "initialize"
+NEXT_MIGRATE = "migrate"
+NEXT_REPAIR = "repair"
+NEXT_UNIT = "unit"
+NEXT_PHASE = "phase"
+NEXT_NONE = "none"

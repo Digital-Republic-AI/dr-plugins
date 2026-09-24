@@ -6,3 +6,5 @@
 .dr_ai/logs/
 .DS_Store
 tasks.json
+__pycache__/
+*.py[cod]

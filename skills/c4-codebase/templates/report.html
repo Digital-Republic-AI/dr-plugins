@@ -1,0 +1,789 @@
+<!doctype html>
+<!-- c4-codebase:template -->
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{title}}</title>
+<style>
+:root {
+  --hue: 50;
+  --bg: oklch(0.975 0.006 var(--hue));
+  --bg-raised: oklch(0.995 0.003 var(--hue));
+  --paper: oklch(0.995 0.003 var(--hue));
+  --ink: oklch(0.24 0.012 var(--hue));
+  --ink-muted: oklch(0.46 0.014 var(--hue));
+  --line: oklch(0.86 0.01 var(--hue));
+  --line-strong: oklch(0.72 0.014 var(--hue));
+  --accent: oklch(0.55 0.12 var(--hue));
+  --accent-ink: oklch(0.99 0.01 var(--hue));
+  --accent-soft: oklch(0.93 0.035 var(--hue));
+  --focus: oklch(0.6 0.16 var(--hue));
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --toc-width: 17rem;
+  --measure: 68ch;
+  --radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: oklch(0.2 0.01 var(--hue));
+    --bg-raised: oklch(0.245 0.011 var(--hue));
+    --ink: oklch(0.93 0.008 var(--hue));
+    --ink-muted: oklch(0.7 0.012 var(--hue));
+    --line: oklch(0.34 0.012 var(--hue));
+    --line-strong: oklch(0.48 0.014 var(--hue));
+    --accent: oklch(0.76 0.11 var(--hue));
+    --accent-ink: oklch(0.2 0.02 var(--hue));
+    --accent-soft: oklch(0.3 0.04 var(--hue));
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-3);
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+.skip {
+  position: absolute;
+  left: var(--space-2);
+  top: -100%;
+  padding: var(--space-1) var(--space-2);
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: var(--radius);
+}
+
+.skip:focus {
+  top: var(--space-2);
+  z-index: 2;
+}
+
+.masthead {
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.kicker {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--space-1);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.meta dt {
+  font-weight: 600;
+}
+
+.meta dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--toc-width) minmax(0, 1fr);
+  align-items: start;
+}
+
+.toc {
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  border-right: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.toc h2 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: var(--space-3) 0 var(--space-1);
+}
+
+.toc h2:first-child {
+  margin-top: 0;
+}
+
+.toc ol,
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc li a {
+  display: block;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+  margin-left: -0.75rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.toc li a:hover {
+  background: var(--accent-soft);
+}
+
+.toc li a[aria-current="true"] {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.toc .num {
+  display: inline-block;
+  min-width: 1.6em;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+main {
+  padding: var(--space-4);
+  min-width: 0;
+}
+
+.intro {
+  max-width: calc(var(--measure) + 2 * var(--space-3));
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  margin-bottom: var(--space-5);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  position: relative;
+}
+
+.intro::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * var(--space-4));
+  height: 1px;
+  background: var(--line);
+}
+
+.intro h2 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.intro p {
+  max-width: none;
+}
+
+.intro p:first-of-type {
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.diagram {
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+
+.diagram:last-of-type {
+  border-bottom: 0;
+}
+
+.diagram header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.diagram .num {
+  font-family: var(--serif);
+  font-size: var(--step-2);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.diagram .desc {
+  max-width: var(--measure);
+  margin-bottom: var(--space-3);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.toolbar button,
+.toolbar a {
+  min-height: 2.75rem;
+  padding: 0 var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--bg-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.toolbar button:hover,
+.toolbar a:hover {
+  border-color: var(--accent);
+}
+
+.toolbar button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+figure {
+  margin: 0;
+}
+
+.canvas {
+  overflow: auto;
+  padding: var(--space-2);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.canvas svg {
+  display: block;
+  height: auto;
+}
+
+.canvas.fit svg {
+  width: 100%;
+  max-width: 100%;
+}
+
+.canvas:fullscreen {
+  padding: var(--space-3);
+  border: 0;
+  border-radius: 0;
+}
+
+figcaption {
+  margin-top: var(--space-1);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-family: var(--mono);
+}
+
+details.legend {
+  margin-top: var(--space-2);
+}
+
+details.legend summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+details.legend .canvas {
+  margin-top: var(--space-1);
+}
+
+details.legend svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.docs {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--line-strong);
+}
+
+.docs-title {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-3);
+}
+
+.doc {
+  max-width: calc(var(--measure) + 2 * var(--space-3));
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  margin-bottom: var(--space-4);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.doc header {
+  display: block;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.doc header h2 {
+  font-size: var(--step-2);
+}
+
+.doc-file {
+  margin: var(--space-1) 0 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.doc-body {
+  font-size: 0.95rem;
+}
+
+.doc-body h3 {
+  font-size: var(--step-1);
+  margin: var(--space-3) 0 var(--space-1);
+}
+
+.doc-body h4,
+.doc-body h5,
+.doc-body h6 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+.doc-body p,
+.doc-body ul,
+.doc-body ol {
+  max-width: none;
+  margin: 0 0 var(--space-2);
+}
+
+.doc-body ul,
+.doc-body ol {
+  padding-left: 1.4em;
+}
+
+.doc-body li > ul,
+.doc-body li > ol {
+  margin: 0.25rem 0 0;
+}
+
+.doc-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0 0 var(--space-2);
+  font-size: 0.9rem;
+}
+
+.doc-body th,
+.doc-body td {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc-body th {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.doc-body pre {
+  overflow-x: auto;
+  padding: var(--space-2);
+  margin: 0 0 var(--space-2);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.doc-body pre code {
+  font-size: inherit;
+}
+
+.doc-body blockquote {
+  margin: 0 0 var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink-muted);
+}
+
+.doc-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: var(--space-3) 0;
+}
+
+.claim {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  padding: 0 0.4em;
+  margin: 0 0.1em;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-muted);
+  vertical-align: 0.1em;
+  white-space: nowrap;
+}
+
+.claim-observed {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.claim-inferred {
+  border-style: dashed;
+}
+
+.claim-ask {
+  background: var(--accent-soft);
+}
+
+.site-footer {
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.site-footer p {
+  margin: 0;
+  max-width: none;
+}
+
+@media (max-width: 56rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc {
+    position: static;
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: var(--space-2) var(--space-2) var(--space-3);
+  }
+
+  .masthead,
+  main,
+  .site-footer {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+
+  .masthead {
+    padding-top: var(--space-4);
+  }
+
+  .meta {
+    grid-template-columns: 1fr;
+  }
+
+  .intro,
+  .doc {
+    padding: var(--space-2);
+  }
+
+  .intro p:first-of-type {
+    font-size: var(--step-1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .toc,
+  .toolbar,
+  .skip {
+    display: none;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .diagram,
+  .doc {
+    break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">{{label_skip}}</a>
+<header class="masthead">
+  <p class="kicker">{{label_kicker}}</p>
+  <h1>{{title}}</h1>
+  <dl class="meta">
+    <dt>{{label_repository}}</dt>
+    <dd>{{repository}}</dd>
+    <dt>{{label_revision}}</dt>
+    <dd>{{revision}}</dd>
+    <dt>{{label_generated}}</dt>
+    <dd>{{generated_at}}</dd>
+  </dl>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="{{label_diagrams}}">
+    <h2>{{label_diagrams}}</h2>
+    <ol>
+{{nav}}
+    </ol>
+{{documents}}
+  </nav>
+  <main id="main">
+    <section class="intro" aria-labelledby="intro-title">
+      <h2 id="intro-title">{{label_intro}}</h2>
+{{intro}}
+    </section>
+{{sections}}
+{{document_sections}}
+  </main>
+</div>
+<footer class="site-footer">
+  <p>{{label_footer}}</p>
+</footer>
+<template id="nav-item">
+      <li><a href="#{{key}}"><span class="num">{{number}}</span>{{diagram_title}}</a></li>
+</template>
+<template id="documents-block">
+    <h2>{{label_documents}}</h2>
+    <ul>
+{{items}}
+    </ul>
+</template>
+<template id="document-item">
+      <li><a href="{{href}}">{{document_title}}</a></li>
+</template>
+<template id="documents-main">
+    <section class="docs" aria-labelledby="docs-title">
+      <h2 id="docs-title" class="docs-title">{{label_documents}}</h2>
+{{items}}
+    </section>
+</template>
+<template id="document-section">
+      <article class="doc" id="{{key}}" aria-labelledby="{{key}}-title">
+        <header>
+          <h2 id="{{key}}-title">{{document_title}}</h2>
+          <p class="doc-file">{{file}}</p>
+        </header>
+        <div class="doc-body">
+{{body}}
+        </div>
+      </article>
+</template>
+<template id="diagram-section">
+    <section class="diagram" id="{{key}}" aria-labelledby="{{key}}-title">
+      <header>
+        <span class="num" aria-hidden="true">{{number}}</span>
+        <h2 id="{{key}}-title">{{diagram_title}}</h2>
+      </header>
+      <div class="desc">
+{{description}}
+      </div>
+      <div class="toolbar">
+        <button type="button" data-action="fit" aria-pressed="true">{{label_fit}}</button>
+        <button type="button" data-action="actual" aria-pressed="false">{{label_actual}}</button>
+        <button type="button" data-action="fullscreen">{{label_fullscreen}}</button>
+        <a href="#" data-action="download" download="{{file}}">{{label_download}}</a>
+      </div>
+      <figure>
+        <div class="canvas fit" tabindex="0">
+{{svg}}
+        </div>
+        <figcaption>{{file}}</figcaption>
+      </figure>
+{{legend}}
+    </section>
+</template>
+<template id="legend-block">
+      <details class="legend">
+        <summary>{{label_legend}}</summary>
+        <div class="canvas">
+{{legend_svg}}
+        </div>
+      </details>
+</template>
+<script>
+(function () {
+  var sections = Array.prototype.slice.call(document.querySelectorAll(".diagram"));
+  var tracked = Array.prototype.slice.call(document.querySelectorAll(".diagram, .doc"));
+  var links = Array.prototype.slice.call(document.querySelectorAll(".toc a[href^='#']"));
+
+  function setPressed(toolbar, action) {
+    toolbar.querySelectorAll("button[aria-pressed]").forEach(function (button) {
+      button.setAttribute("aria-pressed", String(button.getAttribute("data-action") === action));
+    });
+  }
+
+  sections.forEach(function (section) {
+    var canvas = section.querySelector(".canvas");
+    var toolbar = section.querySelector(".toolbar");
+    var svg = canvas.querySelector("svg");
+    var download = toolbar.querySelector("[data-action='download']");
+    if (svg && download) {
+      var blob = new Blob([new XMLSerializer().serializeToString(svg)], { type: "image/svg+xml" });
+      download.href = URL.createObjectURL(blob);
+    }
+    toolbar.addEventListener("click", function (event) {
+      var target = event.target.closest("button");
+      if (!target) {
+        return;
+      }
+      var action = target.getAttribute("data-action");
+      if (action === "fit" || action === "actual") {
+        canvas.classList.toggle("fit", action === "fit");
+        setPressed(toolbar, action);
+      } else if (action === "fullscreen" && canvas.requestFullscreen) {
+        canvas.requestFullscreen();
+      }
+    });
+  });
+
+  if ("IntersectionObserver" in window && links.length) {
+    var byId = {};
+    links.forEach(function (link) {
+      byId[link.getAttribute("href").slice(1)] = link;
+    });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = byId[entry.target.id];
+        if (link && entry.isIntersecting) {
+          links.forEach(function (other) {
+            other.removeAttribute("aria-current");
+          });
+          link.setAttribute("aria-current", "true");
+        }
+      });
+    }, { rootMargin: "-20% 0px -70% 0px" });
+    tracked.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:state:2",
+  "title": "C4 Codebase State",
+  "description": "Workflow progress for one repository. Managed through scripts/workspace.py; never edit by hand without a backup.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workspaceVersion",
+    "createdAt",
+    "updatedAt",
+    "repository",
+    "scope",
+    "output",
+    "versioning",
+    "currentPhase",
+    "activeUnit",
+    "phases",
+    "units",
+    "invalidations",
+    "lastCheckpoint"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "workspaceVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "description": "Portable identity. No absolute paths: identity is the root commit, then the normalized remote.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "remote",
+        "rootCommit",
+        "branch",
+        "baselineRevision",
+        "currentRevision"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rootCommit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "baselineRevision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "currentRevision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "scope": {
+      "description": "Repository-relative POSIX path narrowing the analysis, or null for the whole repository.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "directory"
+      ],
+      "properties": {
+        "directory": {
+          "description": "Publication directory, relative to the repository root unless absolute.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "versioning": {
+      "enum": [
+        "shared",
+        "local"
+      ]
+    },
+    "currentPhase": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/phase"
+        },
+        {
+          "const": "complete"
+        }
+      ]
+    },
+    "activeUnit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "phases": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/phase"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/phaseState"
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unit"
+      }
+    },
+    "invalidations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/invalidation"
+      }
+    },
+    "lastCheckpoint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^cp-[0-9]{3,}$"
+    }
+  },
+  "$defs": {
+    "phase": {
+      "enum": [
+        "reconnaissance",
+        "partitioning",
+        "investigation",
+        "classification",
+        "synthesis",
+        "modeling",
+        "validation",
+        "publication"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "in_progress",
+        "blocked",
+        "complete",
+        "invalidated"
+      ]
+    },
+    "reachability": {
+      "enum": [
+        "active",
+        "likely_active",
+        "uncertain",
+        "test_build_tooling",
+        "generated_vendor",
+        "suspected_dead",
+        "obsolete_confirmed"
+      ]
+    },
+    "unitType": {
+      "enum": [
+        "application",
+        "service",
+        "worker",
+        "frontend",
+        "serverless",
+        "library",
+        "infrastructure",
+        "data",
+        "tooling",
+        "other"
+      ]
+    },
+    "phaseState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "paths",
+        "type",
+        "status",
+        "reachability",
+        "dependsOn",
+        "analyzedRevision",
+        "checkpointIds"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "type": {
+          "$ref": "#/$defs/unitType"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "reachability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/reachability"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dependsOn": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "analyzedRevision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checkpointIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^cp-[0-9]{3,}$"
+          }
+        }
+      }
+    },
+    "invalidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "reason",
+        "changedPaths",
+        "revision",
+        "at"
+      ],
+      "properties": {
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "changedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "at": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

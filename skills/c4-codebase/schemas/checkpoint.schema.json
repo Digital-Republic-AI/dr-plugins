@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:c4-codebase:schema:checkpoint:2",
+  "title": "C4 Codebase Checkpoint",
+  "description": "Stored as checkpoints/<id>.json. The phase must be one of the state phases; scripts/workspace.py validate checks that and every referenced id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "createdAt",
+    "phase",
+    "unit",
+    "repositoryRevision",
+    "dirty",
+    "summary",
+    "completedActions",
+    "nextActions",
+    "evidenceIds",
+    "hypothesisIds",
+    "openQuestionIds"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^cp-[0-9]{3,}$"
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "repositoryRevision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dirty": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "True when the working tree had uncommitted changes; null when the repository is not a git repository."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "nextActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ev-[0-9]{3,}$"
+      }
+    },
+    "hypothesisIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^hyp-[0-9]{3,}$"
+      }
+    },
+    "openQuestionIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^q-[0-9]{3,}$"
+      }
+    }
+  }
+}
