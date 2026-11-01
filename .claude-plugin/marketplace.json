@@ -37,6 +37,19 @@
       "license": "MIT",
       "category": "development",
       "keywords": ["c4", "structurizr", "architecture", "reverse-engineering", "documentation", "diagrams", "skill"]
+    },
+    {
+      "name": "fleet",
+      "description": "Orchestrates worker Claude Code teammates in split panes: the lead session spawns workers, dispatches manual tasks or the items of a Markdown task plan (.claude/fleet/tasks/<name>.md, with dependencies and agent types) to them, collects their results and draws a live status pane. Ships two skills: task-plan (split a goal into parallel items) and orchestrate (run and supervise a plan).",
+      "version": "0.2.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./plugins/fleet",
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
     }
   ]
 }

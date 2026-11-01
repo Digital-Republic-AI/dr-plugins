@@ -17,6 +17,7 @@ Skills distributed on their own (no plugin manifest) are namespaced by their cat
 |---|---|---|
 | [spek](plugins/spek/) | 0.6.0 | Spec-driven development for the code you already have: extract, specify, clarify, plan, tasks, implement, verify |
 | [c4-codebase](skills/c4-codebase/) | 1.0.0 | Evidence-based architecture discovery: C4 model in Structurizr DSL plus reviewable architecture documents. Skill only |
+| [fleet](plugins/fleet/) | 0.2.0 | Orchestrates worker Claude Code teammates in split panes: spawn, run Markdown task plans with dependencies, collect results, live status pane. Skills: task-plan, orchestrate |
 
 ## Layout
 
@@ -36,3 +37,5 @@ Skills distributed on their own (no plugin manifest) are namespaced by their cat
 - Updated: 2026-08-30 - Removed docs/ (development trackers are not versioned)
 - Updated: 2026-09-15 - spek updated to 0.6.0
 - Updated: 2026-09-24 - Added the c4-codebase skill 1.0.0
+- Updated: 2026-10-20 - Added the fleet plugin 0.1.0
+- Updated: 2026-11-01 - fleet updated to 0.2.0: task plans in Markdown, no WiseWork or DR dependency

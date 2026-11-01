@@ -1,0 +1,22 @@
+{
+  "name": "fleet",
+  "displayName": "Fleet",
+  "version": "0.2.0",
+  "description": "Orchestrates worker Claude Code teammates in split panes: spawn, run Markdown task plans with dependencies, collect results, status pane",
+  "author": {
+    "name": "Thiago Montini",
+    "email": "thiagomontini@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "orchestration",
+    "agent-teams",
+    "workers",
+    "parallel",
+    "panes",
+    "status",
+    "task-plan",
+    "markdown"
+  ],
+  "types": "./types/index.d.ts"
+}
