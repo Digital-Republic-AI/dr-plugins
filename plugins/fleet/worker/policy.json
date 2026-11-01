@@ -1,0 +1,5 @@
+{
+  "allowedMcpServers": [],
+  "deniedCommands": ["git stash", "git reset", "git clean", "git checkout --", "git restore"],
+  "modelTiers": { "simple": "haiku", "standard": "sonnet", "complex": "opus" }
+}

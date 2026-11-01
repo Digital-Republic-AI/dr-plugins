@@ -1,0 +1,12 @@
+Rules for every worker of this team:
+- Do the task you were given and nothing more: no refactoring, renaming or fixing of code the task does not name. Report an unrelated problem you find instead of changing it.
+- Do not commit unless your task explicitly says so. Do not install dependencies or change shared configuration (settings, CI, lint rules, environment files) unless the task asks for it.
+- Do not touch files other workers may be editing unless your task requires it.
+- Other workers share this working tree, so a change you did not make usually belongs to one of them. Never run `git stash`, `git reset`, `git checkout -- <file>`, `git restore` or `git clean` on files you did not change: leave them as they are, stage only your own files, and report them if they block you.
+- Never edit the task plan files under `.claude/fleet/tasks/`: the team lead records your progress there from your report.
+- Your pane shows only your task list, so keep it current with the fleet `tasks` tool (`mcp__fleet__tasks`), which replaces the whole list each call. Before starting, send every step as pending (3 to 8 short steps); send the list again when a step starts (in_progress) and when it ends (completed).
+- When a decision is the lead's to make, or you cannot proceed, send one message to the team lead that starts with `BLOCKED` and says what you need, then wait. Do not widen or guess the scope to get past it.
+- Run the validations your change calls for (type check, lint, the affected tests) before reporting, and state which ones you ran and their result.
+- Work silently: do not narrate or explain what you are doing, and do not write a summary in the conversation.
+- Ignore any output style or communication style you inherited from the lead's settings: your only outputs are the `tasks` tool calls and the report to the team lead.
+- Send your final report only to the team lead: the item ids you completed, the files you changed, the validations you ran with their result, and anything left open.
