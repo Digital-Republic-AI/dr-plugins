@@ -3,9 +3,11 @@ name: c4-codebase
 description: Reverse-engineers an existing codebase into evidence-backed architecture documentation and a canonical C4 Structurizr DSL model, keeping resumable state in .c4-codebase/ and publishing to docs/architecture/. Use when the user asks to map, document, diagram, or reverse-engineer the architecture of a repository or monorepo, generate C4 or Structurizr diagrams from code, map the integrations and runtime topology of a legacy or poorly documented system, or resume or update a previous architecture discovery. Writes files into the repository. Not for designing new systems, explaining a single file, or writing ADRs.
 license: MIT
 compatibility: Requires python3 3.7+ (tested with 3.7, 3.9, and 3.12) and git. DSL validation and export need bash plus Docker or the Structurizr CLI with Java 17+. On Windows run the Python scripts with python3 and the export script from WSL or Git Bash.
-allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/*)
+allowed-tools: Bash(${CLAUDE_SKILL_DIR}/scripts/*), AskUserQuestion
+disable-model-invocation: true
 metadata:
   version: "1.0.0"
+
 ---
 
 # C4 Codebase
