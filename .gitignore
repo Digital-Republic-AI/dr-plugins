@@ -8,3 +8,16 @@
 tasks.json
 __pycache__/
 *.py[cod]
+
+.dr_ai/
+.claude/settings.local.json
+
+.claude/commands/ask.md
+
+.claude/commands/deep-research.md
+
+.claude/commands/explain.md
+
+.claude/skills/page-mapper
+
+.claude/commands/ship.md
