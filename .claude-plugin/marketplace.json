@@ -50,6 +50,21 @@
       "license": "MIT",
       "category": "development",
       "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
+    },
+    {
+      "name": "brainstorm-ideias",
+      "description": "Ideation facilitator backed by a research base of 40+ brainstorming and innovation methods (How Might We, SCAMPER, TRIZ, inversion, premortem, biomimicry, JTBD, Blue Ocean, Lean Canvas and more): runs sessions on the user's problem with separate divergence and convergence, or explains a technique with a worked example. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/brainstorm-ideias"],
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["brainstorm", "ideation", "innovation", "creativity", "design-thinking", "jtbd", "blue-ocean", "facilitation", "skill"]
     }
   ]
 }

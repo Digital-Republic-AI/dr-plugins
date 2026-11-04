@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: group-brainstorm-agenda
+expected_outcome: |
+  A 60-minute agenda that frames the problem as a How Might We first, replaces open oral brainstorming with silent individual generation (brainwriting, Crazy 8s, 1-2-4-All) and says why, keeps divergence and convergence in separate blocks, uses an explicit convergence method (dot voting, NUF, impact x effort), and ends with concrete next steps or owners.

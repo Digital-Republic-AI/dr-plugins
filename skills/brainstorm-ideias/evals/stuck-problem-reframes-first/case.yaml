@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: stuck-problem-reframes-first
+expected_outcome: |
+  The response does not jump straight to a list of ideas: it mirrors the problem in one sentence, offers 2-3 How Might We reframings, and asks a single short question so the user picks or adjusts one, possibly naming the technique it intends to use next.
