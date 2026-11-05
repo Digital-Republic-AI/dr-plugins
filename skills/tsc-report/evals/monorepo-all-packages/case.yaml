@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: monorepo-all-packages
+expected_outcome: |
+  Both workspace packages are type-checked (tsconfig.base.json is only an extends base). Their reports land side by side under one tsc-reports/<timestamp>/ folder at the monorepo root, one subfolder per package. The reply gives the total of 6 errors with the split per package (api 2, web 4), the tables, and one assessment paragraph with a first action.
+context:
+  scaffold_script: place-files.sh

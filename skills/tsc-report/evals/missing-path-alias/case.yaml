@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: missing-path-alias
+expected_outcome: |
+  The report shows 10 errors: 9 TS2307 and 1 TS2322. The assessment says every TS2307 is an import through the @/ alias, which tsconfig does not map (no paths), so the first action is adding paths for @/* to ./src/* and running the report again; tsconfig.json is not modified by the run.
+context:
+  scaffold_script: place-files.sh

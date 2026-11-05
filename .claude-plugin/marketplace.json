@@ -50,6 +50,21 @@
       "license": "MIT",
       "category": "development",
       "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
+    },
+    {
+      "name": "tsc-report",
+      "description": "Runs the TypeScript type checker (the project's typecheck script, tsc or tsc -b), saves the raw output and two grouped JSON reports (by error code and by file) to ./tsc-reports/<timestamp>/, and answers with tables plus one paragraph that assesses the current state and recommends the first action. Detects multiple tsconfigs and workspaces. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/tsc-report"],
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["typescript", "tsc", "typecheck", "type-errors", "report", "diagnostics", "skill"]
     }
   ]
 }
