@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: native-git-astro-public
+expected_outcome: |
+  The skill picks Workers Static Assets with the native Git integration (Workers Builds). wrangler.jsonc points assets.directory to dist, uses 404-page not-found handling (Astro is a static generator with a 404.html), and declares empresa.com and www.empresa.com as two custom domain routes. No GitHub Actions workflow is created and no Access is configured. The reply walks through the dashboard steps: connect the GitLab repository, Worker name equal to the name in wrangler.jsonc, build command with pnpm, deploy command npx wrangler deploy, production branch main.
+context:
+  scaffold_script: place-files.sh

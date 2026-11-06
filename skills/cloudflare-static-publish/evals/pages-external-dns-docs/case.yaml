@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: pages-external-dns-docs
+expected_outcome: |
+  The skill generates a Pages wrangler.jsonc (pages_build_output_dir site) and a manual script running wrangler pages deploy with a project name, with no CI workflow, and explains why Pages fits an external DNS provider. It then states the conflict: Cloudflare Access only protects hostnames of an active zone in the account, so docs.cliente.com.br cannot be protected while its DNS stays at Registro.br. It offers ways out (move the nameservers, partial setup on Business, another hostname already on Cloudflare, or only the protected pages.dev address) and does not hand out the CNAME as an unconditional step. The pages.dev address and previews are protected for the three e-mails with One-time PIN before the first deploy. Nothing is applied.
+context:
+  scaffold_script: place-files.sh
