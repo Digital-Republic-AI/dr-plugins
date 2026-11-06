@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: workers-spa-protected-domain
+expected_outcome: |
+  The skill picks Workers Static Assets (zone on Cloudflare) and generates wrangler.jsonc with assets.directory dist, SPA not-found handling, a custom_domain route for painel.acme.com.br, workers_dev false and preview_urls false; a manual deploy script; and a GitHub Actions workflow with cloudflare/wrangler-action reading the token and account id from repository secrets. Nothing is applied on Cloudflare: the reply shows the Access plan (One-time PIN, allow @acme.com.br and joao.silva@parceiro.com, application for painel.acme.com.br) to run before the first deploy, says the DNS record comes from the custom domain at deploy time, and lists the token permissions and secrets the user must set.
+context:
+  scaffold_script: place-files.sh

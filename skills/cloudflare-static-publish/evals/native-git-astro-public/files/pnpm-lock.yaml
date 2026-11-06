@@ -1,0 +1,8 @@
+lockfileVersion: '9.0'
+
+importers:
+  .:
+    dependencies:
+      astro:
+        specifier: ^5.9.0
+        version: 5.9.0

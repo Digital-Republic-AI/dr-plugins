@@ -80,6 +80,21 @@
       "license": "MIT",
       "category": "productivity",
       "keywords": ["brainstorm", "ideation", "innovation", "creativity", "design-thinking", "jtbd", "blue-ocean", "facilitation", "skill"]
+    },
+    {
+      "name": "cloudflare-static-publish",
+      "description": "Publishes static sites on Cloudflare with Workers Static Assets or Pages: generates wrangler.jsonc, a manual deploy script and an optional GitHub Actions workflow (or guides the native Git integration), protects the site with Cloudflare Access One-time PIN, and sets up custom domain DNS on Cloudflare zones or external providers. Every Cloudflare change is planned first and applied only after confirmation. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/cloudflare-static-publish"],
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["cloudflare", "workers", "pages", "static-site", "deploy", "wrangler", "zero-trust", "access", "one-time-pin", "dns", "skill"]
     }
   ]
 }
