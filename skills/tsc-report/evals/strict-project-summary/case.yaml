@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: strict-project-summary
+expected_outcome: |
+  The type check runs, its raw output and two JSON reports (by code, by file) are saved under tsc-reports/<timestamp>/, the reply shows a table by code and a table by file for the 16 errors, and one paragraph says implicit any (TS7006, 12 of 16) dominates because of strict mode and suggests typing the utils first.
+context:
+  scaffold_script: place-files.sh

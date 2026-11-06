@@ -52,6 +52,21 @@
       "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
     },
     {
+      "name": "tsc-report",
+      "description": "Runs the TypeScript type checker (the project's typecheck script, tsc or tsc -b), saves the raw output and two grouped JSON reports (by error code and by file) to ./tsc-reports/<timestamp>/, and answers with tables plus one paragraph that assesses the current state and recommends the first action. Detects multiple tsconfigs and workspaces. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/tsc-report"],
+      "license": "MIT",
+      "category": "development",
+      "keywords": ["typescript", "tsc", "typecheck", "type-errors", "report", "diagnostics", "skill"]
+    },
+    {
       "name": "brainstorm-ideias",
       "description": "Ideation facilitator backed by a research base of 40+ brainstorming and innovation methods (How Might We, SCAMPER, TRIZ, inversion, premortem, biomimicry, JTBD, Blue Ocean, Lean Canvas and more): runs sessions on the user's problem with separate divergence and convergence, or explains a technique with a worked example. Skill only.",
       "version": "1.0.0",

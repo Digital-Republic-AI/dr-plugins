@@ -1,0 +1,5 @@
+{
+  "name": "@shop/api",
+  "private": true,
+  "scripts": { "typecheck": "tsc --noEmit -p tsconfig.json" }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "orders-app",
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "echo lint"
+  }
+}

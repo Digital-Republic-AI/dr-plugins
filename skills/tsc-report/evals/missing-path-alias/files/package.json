@@ -1,0 +1,7 @@
+{
+  "name": "dashboard-web",
+  "private": true,
+  "scripts": {
+    "type-check": "tsc --noEmit -p tsconfig.json"
+  }
+}
