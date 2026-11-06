@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: explains-jtbd-with-example
+expected_outcome: |
+  A structured explanation in Portuguese: one-sentence definition, when to use and when not to, at most 7 numbered steps, a worked everyday example, the most common beginner mistake, and an offer to apply it to a problem of the user's. Cases cited (such as the milkshake) match the research base.
