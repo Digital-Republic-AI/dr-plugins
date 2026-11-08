@@ -20,6 +20,7 @@ Skills distributed on their own (no plugin manifest) are namespaced by their cat
 | [tsc-report](skills/tsc-report/) | 1.0.0 | Runs the TypeScript type check, saves the raw output and JSON reports grouped by error code and by file under `./tsc-reports/<timestamp>/`, and answers with tables plus an assessment of the current state and the first action. Skill only |
 | [brainstorm-ideias](skills/brainstorm-ideias/) | 1.0.0 | Ideation facilitator backed by a research base of 40+ brainstorming and innovation methods: runs sessions with separate divergence and convergence, or explains a technique with a worked example. Skill only |
 | [cloudflare-static-publish](skills/cloudflare-static-publish/) | 1.0.0 | Publishes static sites on Cloudflare (Workers Static Assets or Pages) with a manual deploy script, GitHub Actions or the native Git integration, Access One-time PIN login and the custom domain DNS; Cloudflare changes are planned and applied only after confirmation. Skill only |
+| [open-questions](skills/open-questions/) | 1.0.0 | Publishes the open questions of the current work as an interactive Artifact: one question at a time with its context, controls per item type, answers saved for Claude to read back, and owners so another person can answer their part. Skill only |
 | [fleet](plugins/fleet/) | 0.2.0 | Orchestrates worker Claude Code teammates in split panes: spawn, run Markdown task plans with dependencies, collect results, live status pane. Skills: task-plan, orchestrate |
 
 ## Layout
@@ -45,3 +46,4 @@ Skills distributed on their own (no plugin manifest) are namespaced by their cat
 - Updated: 2026-11-05 - Added the tsc-report skill 1.0.0
 - Updated: 2026-11-04 - Added the brainstorm-ideias skill 1.0.0
 - Updated: 2026-11-06 - Added the cloudflare-static-publish skill 1.0.0
+- Updated: 2026-11-08 - Added the open-questions skill 1.0.0

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: csv-export-planning-decisions
+expected_outcome: |
+  A single HTML question page built from the eight open points in plan-draft.md, showing one question at a time with an index, progress and previous/next navigation. Each item has a type that fits it (choices for separator, money format, generation strategy; an open or choice item for permissions; a confirm or choice item for audit), context taken from the draft (the 50k-row browser limit, the 2.4M-row table, CPF columns), a labeled but not preselected recommendation, a note field, answers saved through the db capability with a browser-storage fallback, and a review screen with a copy-answers action. Copy in Portuguese with diacritics, both themes, no emojis.
+context:
+  scaffold_script: place-files.sh

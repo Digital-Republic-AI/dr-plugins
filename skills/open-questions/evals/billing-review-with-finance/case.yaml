@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: billing-review-with-finance
+expected_outcome: |
+  A single HTML question page covering the seven billing changes, one question at a time, where items 1, 2, 5 and 6 are owned by Marina (financeiro) and the rest by the user. Review items show before and after with the file references, there is an owner filter so Marina sees only hers, answers are attributed to who wrote them through the user capability, approving needs one click while correcting requires a note, and the final reply explains how to share the page with Marina and that a public link cannot save answers.
+context:
+  scaffold_script: place-files.sh

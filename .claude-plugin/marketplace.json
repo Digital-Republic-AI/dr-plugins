@@ -95,6 +95,21 @@
       "license": "MIT",
       "category": "development",
       "keywords": ["cloudflare", "workers", "pages", "static-site", "deploy", "wrangler", "zero-trust", "access", "one-time-pin", "dns", "skill"]
+    },
+    {
+      "name": "open-questions",
+      "description": "Publishes the open questions of the current work (gaps, assumptions to confirm, decisions, items to approve) as an interactive claude.ai Artifact: one question at a time with its context, controls that fit each item type, answers saved for Claude to read back, and owners so another person can answer their part. Focuses on the design and usability of the page. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/open-questions"],
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["artifacts", "open-questions", "decisions", "validation", "review", "planning", "ux", "skill"]
     }
   ]
 }
