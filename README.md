@@ -1,41 +1,93 @@
 # dr-plugins
 
-Digital Republic's marketplace of Claude Code plugins.
+English | [Português](README.pt-BR.md)
+
+Digital Republic's marketplace of Claude Code plugins and skills. Each entry covers one recurring part of software work, such as specifying a change, documenting an architecture, running parallel workers, publishing a site or collecting decisions. They install separately, so you only add what you use.
+
+> Last updated: 2026-11-08
 
 ## Installation
 
-```
+```text
 /plugin marketplace add Digital-Republic-AI/dr-plugins
-/plugin install <plugin>@dr-plugins
+/plugin install <name>@dr-plugins
 ```
 
-Skills distributed on their own (no plugin manifest) are namespaced by their catalog entry: `c4-codebase` is invoked as `/c4-codebase:c4-codebase`.
+Restart Claude Code after installing a plugin. Skills distributed on their own (no plugin manifest) are namespaced by their catalog entry: `c4-codebase` is invoked as `/c4-codebase:c4-codebase`.
+
+## Catalog
+
+| Name | Type | Version | In one line |
+|---|---|---|---|
+| [spek](plugins/spek/) | Plugin | 0.6.0 | Spec-driven development that starts from the code you already have |
+| [fleet](plugins/fleet/) | Plugin | 0.2.0 | A lead session that runs worker Claude Code teammates in split panes |
+| [c4-codebase](skills/c4-codebase/) | Skill | 1.0.0 | Architecture documentation and a C4 model reverse-engineered from a repository |
+| [tsc-report](skills/tsc-report/) | Skill | 1.0.0 | TypeScript type check with grouped reports and a recommended first action |
+| [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Ideation sessions backed by 40+ documented methods |
+| [cloudflare-static-publish](skills/cloudflare-static-publish/) | Skill | 1.0.0 | Static sites on Cloudflare with deploy, login protection and DNS |
+| [open-questions](skills/open-questions/) | Skill | 1.0.0 | Open questions of the current work as a page that people answer one at a time |
 
 ## Plugins
 
-| Plugin | Version | Description |
-|---|---|---|
-| [spek](plugins/spek/) | 0.6.0 | Spec-driven development for the code you already have: extract, specify, clarify, plan, tasks, implement, verify |
-| [c4-codebase](skills/c4-codebase/) | 1.0.0 | Evidence-based architecture discovery: C4 model in Structurizr DSL plus reviewable architecture documents. Skill only |
-| [tsc-report](skills/tsc-report/) | 1.0.0 | Runs the TypeScript type check, saves the raw output and JSON reports grouped by error code and by file under `./tsc-reports/<timestamp>/`, and answers with tables plus an assessment of the current state and the first action. Skill only |
-| [brainstorm-ideias](skills/brainstorm-ideias/) | 1.0.0 | Ideation facilitator backed by a research base of 40+ brainstorming and innovation methods: runs sessions with separate divergence and convergence, or explains a technique with a worked example. Skill only |
-| [cloudflare-static-publish](skills/cloudflare-static-publish/) | 1.0.0 | Publishes static sites on Cloudflare (Workers Static Assets or Pages) with a manual deploy script, GitHub Actions or the native Git integration, Access One-time PIN login and the custom domain DNS; Cloudflare changes are planned and applied only after confirmation. Skill only |
-| [open-questions](skills/open-questions/) | 1.0.0 | Publishes the open questions of the current work as an interactive Artifact: one question at a time with its context, controls per item type, answers saved for Claude to read back, and owners so another person can answer their part. Skill only |
-| [fleet](plugins/fleet/) | 0.2.0 | Orchestrates worker Claude Code teammates in split panes: spawn, run Markdown task plans with dependencies, collect results, live status pane. Skills: task-plan, orchestrate |
+### spek
 
-## Layout
+Spec-driven development built for existing codebases. `/spek:extract` first records how the current code behaves as a baseline. The change is then specified with explicit scope boundaries, clarified, planned, split into tasks, implemented and verified against both the spec and the baseline. New projects follow the same flow without the extract step, and small changes can use a condensed mode after you confirm it.
 
-- `.claude-plugin/marketplace.json` -- the catalog. Every plugin entry points at `./plugins/<name>`.
-- `plugins/<name>/` -- the shipped plugin (this is what gets installed).
-- `skills/<name>/` -- a skill distributed as-is, without a plugin manifest. Its catalog entry uses `"source": "./"`, `"strict": false` and `"skills": ["./skills/<name>"]`, so only that directory loads.
+- **Helps with**: changes to code nobody fully remembers, where the risk is breaking behavior that was never written down. The baseline and the verify step make that risk visible before merge.
+- **Start with**: `/spek:start`, which detects the project state and runs the right first command.
+- **Requires**: `bash` and `jq`.
 
-## Releasing a plugin
+### fleet
 
-1. Bump `version` in `plugins/<name>/.claude-plugin/plugin.json` and in the catalog entry above. For a skill under `skills/<name>/`, bump `metadata.version` in its `SKILL.md` and the catalog entry instead.
-2. Run `claude plugin validate plugins/<name> --strict` (or `claude plugin validate skills/` for a skill) and `claude plugin validate .`.
-3. Add a CHANGELOG entry in the plugin (skills carry no CHANGELOG here; their history lives in the source repository) and commit. Users receive the update on their next marketplace refresh.
+Turns a Claude Code session into a lead that orchestrates worker teammates, each in its own split pane. Work comes from a Markdown task plan with dependencies and optional agent types. The lead dispatches the items that are ready, marks them as they start and finish, and shows a live status pane. The `task-plan` skill splits a goal into parallel items, and `orchestrate` runs and supervises the plan.
+
+- **Helps with**: tasks that split into independent parts, such as several modules, several fixes or a migration in batches, where one session working in sequence is the bottleneck.
+- **Start with**: `/fleet`.
+- **Requires**: agent teams enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`) and a team mode with panes (`tmux`, `iterm2` or `auto`).
+
+## Skills
+
+### c4-codebase
+
+Reverse-engineers a repository or monorepo into architecture documents and a C4 model in Structurizr DSL. Every element points to the evidence it came from in the code. Progress is saved in `.c4-codebase/`, so a large codebase can be mapped across several sessions.
+
+- **Helps with**: onboarding, architecture reviews and integration mapping, when the existing diagrams are missing or out of date.
+- **Requires**: Python 3.7+ and git. Validating and exporting the DSL needs Docker or the Structurizr CLI with Java 17+.
+
+### tsc-report
+
+Runs the project's TypeScript type check (its `typecheck` script, `tsc` or `tsc -b`) and saves the raw output plus two JSON reports, one grouped by error code and one by file, under `./tsc-reports/<timestamp>/`. The answer shows tables and one paragraph on the current state and the first thing to fix.
+
+- **Helps with**: turning hundreds of type errors into a short list of causes, and comparing runs over time.
+- **Requires**: Node.js 18+ and a TypeScript type checker.
+
+### brainstorm-ideias
+
+An ideation facilitator backed by a research base of over 40 methods, among them How Might We, SCAMPER, TRIZ, premortem, Jobs-to-be-Done and Blue Ocean. It runs a session on your problem with divergence and convergence kept apart, or explains a technique with a worked example. Cases and figures it cites come from the research base, not from memory.
+
+- **Helps with**: getting past the first obvious answers, planning a team workshop, or stress-testing an idea before investing in it.
+- **Start with**: ask for ideas or for a brainstorm. Claude uses the skill on its own when the request fits.
+
+### cloudflare-static-publish
+
+Publishes a static site, plain HTML or a build output such as Vite, Astro or a Next.js export, on Cloudflare Workers Static Assets or Pages. It generates `wrangler.jsonc`, a manual deploy script and an optional GitHub Actions workflow, can protect the site with Cloudflare Access One-time PIN, and sets up the custom domain DNS. Every Cloudflare change is shown as a plan first and applied only after you confirm.
+
+- **Helps with**: internal docs, prototypes and landing pages that need a URL, optional e-mail-based access and repeatable deploys, without setting up the Cloudflare pieces by hand.
+- **Requires**: Node.js 18+, a Cloudflare account, and `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` in the environment for the API steps.
+
+### open-questions
+
+Collects what is still undecided in the current work, such as gaps, assumptions to confirm, decisions and changes to approve. It publishes them as a claude.ai Artifact that shows one question at a time, with enough context to answer without the terminal. Each type of item gets fitting controls: options with their consequences, confirm or correct, approve or change, or free text. Answers are saved on the page, so Claude can read them back and continue, and each question can be assigned to another person, such as a product owner, who answers only their part.
+
+- **Helps with**: planning and review moments where several decisions pile up. They get answered calmly and in one place, instead of in a long chat message.
+- **Requires**: Claude Code signed in with `/login` on a claude.ai plan with Artifacts. Without the page's storage, answers can still be copied back by hand.
+
+## Contributing
+
+How the repository is organized and how to release a new version is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Change History
+
 - Created: 2026-08-30
 - Updated: 2026-08-30 - Removed the spek research corpus from docs/
 - Updated: 2026-08-30 - Removed docs/ (development trackers are not versioned)
@@ -47,3 +99,5 @@ Skills distributed on their own (no plugin manifest) are namespaced by their cat
 - Updated: 2026-11-04 - Added the brainstorm-ideias skill 1.0.0
 - Updated: 2026-11-06 - Added the cloudflare-static-publish skill 1.0.0
 - Updated: 2026-11-08 - Added the open-questions skill 1.0.0
+- Updated: 2026-11-08 - Rewrote the README around what each plugin and skill does; moved layout and release steps to CONTRIBUTING.md
+- Updated: 2026-11-08 - Added the Portuguese version README.pt-BR.md and language links
