@@ -21,3 +21,5 @@ __pycache__/
 .claude/skills/page-mapper
 
 .claude/commands/ship.md
+
+.claude/rules/
