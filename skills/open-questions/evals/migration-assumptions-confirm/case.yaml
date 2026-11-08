@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: migration-assumptions-confirm
+expected_outcome: |
+  A single HTML question page with the seven assumptions as confirm-type items (Confirmo, Corrigir, Não sei), one at a time, with the evidence from the notes attached to the related items (412 million rows, the UTC change in 2023-03, zero non-null location rows). The A4 timezone item explains the risk that the timestamps changed meaning in 2023-03. Correcting requires a note, items can be skipped or delegated, answers are saved through db with fallback, and there is a review screen with copy answers. Portuguese with diacritics, no emojis.
+context:
+  scaffold_script: place-files.sh
