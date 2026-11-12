@@ -21,7 +21,7 @@ Reinicie o Claude Code depois de instalar um plugin. Skills distribuídas sozinh
 |---|---|---|---|
 | [spek](plugins/spek/) | Plugin | 0.6.0 | Desenvolvimento guiado por especificação que parte do código que já existe |
 | [fleet](plugins/fleet/) | Plugin | 0.2.0 | Uma sessão líder que coordena workers do Claude Code em painéis divididos |
-| [notes](plugins/notes/) | Plugin | 0.1.0 | Post-its criados com `/note <texto>`, num quadro em painel lateral |
+| [notes](plugins/notes/) | Plugin | 0.1.1 | Post-its criados com `/note <texto>`, num quadro em painel lateral |
 | [c4-codebase](skills/c4-codebase/) | Skill | 1.0.0 | Documentação de arquitetura e modelo C4 extraídos de um repositório |
 | [tsc-report](skills/tsc-report/) | Skill | 1.0.0 | Checagem de tipos do TypeScript com relatórios agrupados e a primeira ação recomendada |
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Sessões de ideação apoiadas em mais de 40 métodos documentados |

@@ -8,6 +8,9 @@ const PANE = 'notes-board'
 const COMMAND = 'note'
 const STORE_KEY = 'notes'
 const CARD_COLUMNS = 26
+const OPENED = 'Quadro de post-its aberto.'
+// Said where the surface draws no pane, or the terminal is too narrow for one.
+const NO_PANE = 'O quadro não cabe aqui (esta tela não mostra painéis ou o terminal está estreito). Use /note lista para ver as notas.'
 
 // Change the tag when a note's fields change: it declines what an earlier
 // version kept in the session's state.
@@ -39,6 +42,38 @@ async function removeNote($: $, id: number): Promise<boolean> {
   return true
 }
 
+type Parts = ReturnType<EngineInterface['ui']['resolve']>
+
+// The post-its as cards, newest first; drawn in the pane and in the chat row.
+function cardGrid(parts: Parts, $: $, notes: readonly Note[], width: number) {
+  const { Box, Text, Button } = parts
+  return (
+    <Box flexDirection="row" flexWrap="wrap" gap={1}>
+      {notes.map(note => {
+        const color = PALETTE[note.color % PALETTE.length]
+        return (
+          <Box key={`note-${note.id}`} flexDirection="column" width={width} borderStyle="round" borderColor={color} backgroundColor={color} paddingX={1}>
+            <Text color={INK} wrap="wrap">
+              {note.text}
+            </Text>
+            <Box flexDirection="row" justifyContent="space-between">
+              <Text color={INK} dimColor>
+                #{note.id} {stamp(note.createdAt)}
+              </Text>
+              <Button key={`del-${note.id}`} plain label="apagar" onPress={() => void removeNote($, note.id)} />
+            </Box>
+            {note.project && (
+              <Text color={INK} dimColor wrap="truncate-end">
+                {note.project}
+              </Text>
+            )}
+          </Box>
+        )
+      })}
+    </Box>
+  )
+}
+
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
     await $.command.register({
@@ -55,13 +90,18 @@ export const register: Register = on => {
   on('command.run', { command: COMMAND }, async ($, e) => {
     const cmd = parseNoteArgs(e.args)
     switch (cmd.kind) {
-      case 'open':
-        await openBoard($)
-        return { text: 'Quadro de post-its aberto.' }
+      case 'open': {
+        const opened = await openBoard($)
+        if (opened.isPlaced) return { text: OPENED }
+        const list = listText(readNotes(await $.store.get(STORE_KEY)))
+        return { text: `${list}
+
+O quadro não aparece nesta tela, então as notas estão listadas aqui.` }
+      }
       case 'add': {
         const note = await addNote($, cmd.text)
-        await openBoard($)
-        return { text: `Nota #${note.id} anotada.` }
+        const opened = await openBoard($)
+        return { text: opened.isPlaced ? `Nota #${note.id} anotada.` : `Nota #${note.id} anotada. ${NO_PANE}` }
       }
       case 'remove':
         return { text: (await removeNote($, cmd.id)) ? `Nota #${cmd.id} apagada.` : `Não existe nota #${cmd.id}.` }
@@ -105,29 +145,28 @@ export const register: Register = on => {
           />
         )}
         {notes.length === 0 && <Text dimColor>Nenhuma nota ainda. Use /note &lt;texto&gt;.</Text>}
-        <Box flexDirection="row" flexWrap="wrap" gap={1}>
-          {notes.map(note => {
-            const color = PALETTE[note.color % PALETTE.length]
-            return (
-              <Box key={`note-${note.id}`} flexDirection="column" width={width} borderStyle="round" borderColor={color} backgroundColor={color} paddingX={1}>
-                <Text color={INK} wrap="wrap">
-                  {note.text}
-                </Text>
-                <Box flexDirection="row" justifyContent="space-between">
-                  <Text color={INK} dimColor>
-                    #{note.id} {stamp(note.createdAt)}
-                  </Text>
-                  <Button key={`del-${note.id}`} plain label="apagar" onPress={() => void removeNote($, note.id)} />
-                </Box>
-                {note.project && (
-                  <Text color={INK} dimColor wrap="truncate-end">
-                    {note.project}
-                  </Text>
-                )}
-              </Box>
-            )
-          })}
-        </Box>
+        {cardGrid(parts, $, notes, width)}
+      </Box>
+    )
+  })
+  // Where no pane shows (the mobile app, a narrow terminal), `/note` and
+  // `/note lista` draw the cards in the chat row instead of plain lines.
+  on('ui.render', { component: 'CommandOutput', props: { command: COMMAND } }, async ($, e, next) => {
+    const cmd = parseNoteArgs(e.props.args)
+    const isBoard = cmd.kind === 'list' || (cmd.kind === 'open' && e.props.text !== OPENED)
+    if (!isBoard || e.props.isErrored) return next(e)
+    const parts = $.ui.resolve(e)
+    const { Box, Text } = parts
+    const notes = [...(await read($, board))].reverse()
+    const width = Math.max(16, Math.min(CARD_COLUMNS, e.viewport?.columns ?? 40))
+
+    return (
+      <Box flexDirection="column" gap={1}>
+        <Text bold>
+          {notes.length} {notes.length === 1 ? 'nota' : 'notas'}
+        </Text>
+        {notes.length === 0 && <Text dimColor>Nenhuma nota ainda. Use /note &lt;texto&gt;.</Text>}
+        {cardGrid(parts, $, notes, width)}
       </Box>
     )
   })

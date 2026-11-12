@@ -4,7 +4,7 @@ Last updated: 2026-11-12
 
 Post-it notes inside Claude Code. Type `/note <text>` and the text lands on a board of colored sticky notes, shown in a pane beside the chat. Notes are saved in the plugin's own store, so they stay between sessions and projects. Each note shows its number, when you wrote it and the project folder it came from.
 
-Version: 0.1.0 (see [CHANGELOG.md](CHANGELOG.md)). License: MIT.
+Version: 0.1.1 (see [CHANGELOG.md](CHANGELOG.md)). License: MIT.
 
 ## Installation
 
@@ -24,6 +24,8 @@ Restart Claude Code after installing.
 | `/note lista` | Lists every note in the chat, newest first |
 | `/note rm <n>` | Deletes note `#n` (`/note apagar <n>` works too) |
 | `/note ajuda` | Shows these commands |
+
+The board opens in a pane where the screen has room for one: the terminal, the desktop app and VS Code. The mobile app shows no panes, and neither does a terminal under about 110 columns. There, `/note` and `/note lista` draw the same cards in the chat.
 
 On the board, `nova` (hotkey `n`) opens a field to type a note without leaving the pane, on surfaces that draw text fields. Each note has an `apagar` button that deletes it.
 

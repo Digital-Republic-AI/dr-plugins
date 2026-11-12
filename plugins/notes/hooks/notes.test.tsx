@@ -19,7 +19,7 @@ const PANE = {
 } as const
 
 // Stands for the engine: an in-memory store, a project root, a pane that opens.
-function engine(on: On, seed: Record<string, unknown> = {}) {
+function engine(on: On, seed: Record<string, unknown> = {}, isPlaced = true) {
   const store: Record<string, unknown> = { ...seed }
   on('store.get', (_, e) => ({ value: store[e.key] }))
   on('store.set', (_, e) => {
@@ -28,7 +28,7 @@ function engine(on: On, seed: Record<string, unknown> = {}) {
   })
   on('session.root', () => ({ value: '/home/dev/acme-shop' }))
   on('command.register', (_, e) => ({ value: { command: e.name } }))
-  on('ui.open', () => ({ value: { isPlaced: true } }))
+  on('ui.open', () => ({ value: isPlaced ? { isPlaced: true } : { isPlaced: false, reason: 'no-surface' } }))
   on('session.start', (_, e) => ({ cwd: e.cwd }))
   return store
 }
@@ -84,4 +84,30 @@ test('/note rm and /note lista answer in the chat', async ($, on) => {
   expect((await note($, 'rm 1')).text).toBe('Nota #1 apagada.')
   expect((await note($, 'rm 9')).text).toBe('Não existe nota #9.')
   expect((await note($, 'lista')).text).toMatch(/^#2 Segunda/)
+})
+
+test('where no pane is drawn, /note lists the notes in the chat', async ($, on) => {
+  engine(on, {}, false)
+  await $.session.start({ cwd: '/', surface: 'mobile', isInteractive: true })
+
+  expect((await note($, 'ver no cli tambem')).text).toMatch(/^Nota #1 anotada\. O quadro não cabe aqui/)
+  expect((await note($, '')).text).toMatch(/^#1 ver no cli tambem .*\n\nO quadro não aparece nesta tela/)
+})
+
+test('the chat row of /note draws the cards where no pane shows', async ($, on) => {
+  engine(on, { notes: [{ id: 4, text: 'Ver no cli também', createdAt: 0, color: 1, project: 'dr-plugins' }] }, false)
+  await $.session.start({ cwd: '/', surface: 'mobile', isInteractive: true })
+  const text = (await note($, '')).text ?? ''
+
+  for (const surface of ['terminal', 'desktop', 'vscode', 'mobile'] as const) {
+    const ui = await $.ui.mount({
+      plugin: 'notes',
+      surface,
+      component: 'CommandOutput',
+      props: { command: 'note', args: '', text, isErrored: false },
+    })
+    expect((await ui.find({ type: 'Text', text: /cli/ }))?.text).toBe('Ver no cli também')
+    expect((await ui.find({ type: 'Button', key: 'del-4' }))).toBeTruthy()
+    await ui.unmount()
+  }
 })

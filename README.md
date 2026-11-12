@@ -21,7 +21,7 @@ Restart Claude Code after installing a plugin. Skills distributed on their own (
 |---|---|---|---|
 | [spek](plugins/spek/) | Plugin | 0.6.0 | Spec-driven development that starts from the code you already have |
 | [fleet](plugins/fleet/) | Plugin | 0.2.0 | A lead session that runs worker Claude Code teammates in split panes |
-| [notes](plugins/notes/) | Plugin | 0.1.0 | Post-it notes from `/note <text>`, shown on a board in a side pane |
+| [notes](plugins/notes/) | Plugin | 0.1.1 | Post-it notes from `/note <text>`, shown on a board in a side pane |
 | [c4-codebase](skills/c4-codebase/) | Skill | 1.0.0 | Architecture documentation and a C4 model reverse-engineered from a repository |
 | [tsc-report](skills/tsc-report/) | Skill | 1.0.0 | TypeScript type check with grouped reports and a recommended first action |
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Ideation sessions backed by 40+ documented methods |
