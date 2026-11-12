@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: no-open-prs
+expected_outcome: |
+  The export is an empty list. The reply, in Portuguese, says in one or two lines that acme/billing-worker has no open PRs, shows no tables and invents no PRs, and does not treat the empty file as an error.
+context:
+  scaffold_script: place-files.sh

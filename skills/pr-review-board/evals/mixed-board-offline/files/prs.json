@@ -1,0 +1,678 @@
+[
+  {
+    "number": 412,
+    "title": "Add idempotency keys to the checkout endpoint",
+    "author": {
+      "id": "U_bruno-lima",
+      "is_bot": false,
+      "login": "bruno-lima",
+      "name": "Bruno Lima"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-10T13:20:00Z",
+    "updatedAt": "2026-11-11T09:02:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [],
+    "reviewRequests": [
+      {
+        "__typename": "User",
+        "login": "marina-dev",
+        "name": "marina-dev"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      },
+      {
+        "id": "L_checkout",
+        "name": "checkout",
+        "description": "",
+        "color": "1d76db"
+      }
+    ],
+    "headRefName": "feat/checkout-idempotency",
+    "baseRefName": "main",
+    "additions": 180,
+    "deletions": 22,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/412"
+  },
+  {
+    "number": 409,
+    "title": "Fix rounding in the BRL currency formatter",
+    "author": {
+      "id": "U_carla-souza",
+      "is_bot": false,
+      "login": "carla-souza",
+      "name": "Carla Souza"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-03T16:40:00Z",
+    "updatedAt": "2026-11-04T11:15:00Z",
+    "reviewDecision": "CHANGES_REQUESTED",
+    "latestReviews": [
+      {
+        "id": "R_marina-devCH",
+        "author": {
+          "login": "marina-dev"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-04T11:15:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "CHANGES_REQUESTED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_bug",
+        "name": "bug",
+        "description": "",
+        "color": "d73a4a"
+      }
+    ],
+    "headRefName": "fix/brl-rounding",
+    "baseRefName": "main",
+    "additions": 14,
+    "deletions": 9,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/409"
+  },
+  {
+    "number": 405,
+    "title": "Bump Prisma to 6.4 and regenerate the client",
+    "author": {
+      "id": "U_dependabot[bot]",
+      "is_bot": true,
+      "login": "dependabot[bot]",
+      "name": "dependabot[bot]"
+    },
+    "isDraft": false,
+    "createdAt": "2026-10-28T06:00:00Z",
+    "updatedAt": "2026-11-11T06:10:00Z",
+    "reviewDecision": "APPROVED",
+    "latestReviews": [
+      {
+        "id": "R_joao-pereiraAP",
+        "author": {
+          "login": "joao-pereira"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-10T18:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_dependencies",
+        "name": "dependencies",
+        "description": "",
+        "color": "0366d6"
+      }
+    ],
+    "headRefName": "dependabot/npm_and_yarn/prisma-6.4.0",
+    "baseRefName": "main",
+    "additions": 1240,
+    "deletions": 1180,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "build",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/405"
+  },
+  {
+    "number": 415,
+    "title": "WIP: order export to CSV",
+    "author": {
+      "id": "U_marina-dev",
+      "is_bot": false,
+      "login": "marina-dev",
+      "name": "Marina Dev"
+    },
+    "isDraft": true,
+    "createdAt": "2026-11-12T08:30:00Z",
+    "updatedAt": "2026-11-12T08:30:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      }
+    ],
+    "headRefName": "feat/order-export",
+    "baseRefName": "main",
+    "additions": 96,
+    "deletions": 0,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": null,
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": null,
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "QUEUED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/415"
+  },
+  {
+    "number": 398,
+    "title": "Migrate the cart service to the new rate limiter",
+    "author": {
+      "id": "U_joao-pereira",
+      "is_bot": false,
+      "login": "joao-pereira",
+      "name": "Joao Pereira"
+    },
+    "isDraft": false,
+    "createdAt": "2026-10-20T14:00:00Z",
+    "updatedAt": "2026-11-09T17:45:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [
+      {
+        "id": "R_bruno-limaAP",
+        "author": {
+          "login": "bruno-lima"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-09T17:45:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [
+      {
+        "__typename": "User",
+        "login": "marina-dev",
+        "name": "marina-dev"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      },
+      {
+        "id": "L_infra",
+        "name": "infra",
+        "description": "",
+        "color": "fbca04"
+      }
+    ],
+    "headRefName": "chore/cart-rate-limiter",
+    "baseRefName": "main",
+    "additions": 310,
+    "deletions": 275,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/398"
+  },
+  {
+    "number": 413,
+    "title": "Add webhook retries for the payment gateway",
+    "author": {
+      "id": "U_carla-souza",
+      "is_bot": false,
+      "login": "carla-souza",
+      "name": "Carla Souza"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-09T10:10:00Z",
+    "updatedAt": "2026-11-10T15:30:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [
+      {
+        "id": "R_joao-pereiraCO",
+        "author": {
+          "login": "joao-pereira"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-10T15:30:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "COMMENTED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_payments",
+        "name": "payments",
+        "description": "",
+        "color": "5319e7"
+      }
+    ],
+    "headRefName": "feat/webhook-retries",
+    "baseRefName": "main",
+    "additions": 142,
+    "deletions": 18,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": null,
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/413"
+  },
+  {
+    "number": 401,
+    "title": "Remove the legacy coupon endpoints",
+    "author": {
+      "id": "U_bruno-lima",
+      "is_bot": false,
+      "login": "bruno-lima",
+      "name": "Bruno Lima"
+    },
+    "isDraft": false,
+    "createdAt": "2026-10-22T09:00:00Z",
+    "updatedAt": "2026-11-02T12:00:00Z",
+    "reviewDecision": "CHANGES_REQUESTED",
+    "latestReviews": [
+      {
+        "id": "R_carla-souzaCH",
+        "author": {
+          "login": "carla-souza"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-01T10:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "CHANGES_REQUESTED"
+      },
+      {
+        "id": "R_joao-pereiraAP",
+        "author": {
+          "login": "joao-pereira"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-10-30T10:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_breaking-change",
+        "name": "breaking-change",
+        "description": "",
+        "color": "b60205"
+      },
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      }
+    ],
+    "headRefName": "chore/remove-legacy-coupons",
+    "baseRefName": "main",
+    "additions": 12,
+    "deletions": 640,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "CONFLICTING",
+    "url": "https://github.com/acme/shop-api/pull/401"
+  },
+  {
+    "number": 410,
+    "title": "Cache the product catalog in Redis",
+    "author": {
+      "id": "U_joao-pereira",
+      "is_bot": false,
+      "login": "joao-pereira",
+      "name": "Joao Pereira"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-05T11:00:00Z",
+    "updatedAt": "2026-11-11T14:20:00Z",
+    "reviewDecision": "APPROVED",
+    "latestReviews": [
+      {
+        "id": "R_marina-devAP",
+        "author": {
+          "login": "marina-dev"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-11T14:20:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      },
+      {
+        "id": "R_carla-souzaAP",
+        "author": {
+          "login": "carla-souza"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-10T09:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_performance",
+        "name": "performance",
+        "description": "",
+        "color": "c2e0c6"
+      },
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      }
+    ],
+    "headRefName": "perf/catalog-redis-cache",
+    "baseRefName": "main",
+    "additions": 220,
+    "deletions": 40,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "build",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/410"
+  },
+  {
+    "number": 414,
+    "title": "Docs: payment flow sequence diagram",
+    "author": {
+      "id": "U_ana-ribeiro",
+      "is_bot": false,
+      "login": "ana-ribeiro",
+      "name": "Ana Ribeiro"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-11T19:00:00Z",
+    "updatedAt": "2026-11-11T19:00:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_docs",
+        "name": "docs",
+        "description": "",
+        "color": "0075ca"
+      }
+    ],
+    "headRefName": "docs/payment-sequence",
+    "baseRefName": "main",
+    "additions": 58,
+    "deletions": 3,
+    "statusCheckRollup": [],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/414"
+  },
+  {
+    "number": 407,
+    "title": "Normalize phone numbers on signup",
+    "author": {
+      "id": "U_ana-ribeiro",
+      "is_bot": false,
+      "login": "ana-ribeiro",
+      "name": "Ana Ribeiro"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-06T15:00:00Z",
+    "updatedAt": "2026-11-10T10:00:00Z",
+    "reviewDecision": "APPROVED",
+    "latestReviews": [
+      {
+        "id": "R_bruno-limaAP",
+        "author": {
+          "login": "bruno-lima"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-10T10:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [
+      {
+        "__typename": "Team",
+        "name": "Backend Core",
+        "slug": "backend-core"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_backend",
+        "name": "backend",
+        "description": "",
+        "color": "0e8a16"
+      }
+    ],
+    "headRefName": "fix/phone-normalization",
+    "baseRefName": "main",
+    "additions": 44,
+    "deletions": 12,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/shop-api/actions/runs/1",
+        "name": "test",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/shop-api/pull/407"
+  }
+]

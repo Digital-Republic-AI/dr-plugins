@@ -4,7 +4,7 @@ English | [Português](README.pt-BR.md)
 
 Digital Republic's marketplace of Claude Code plugins and skills. Each entry covers one recurring part of software work, such as specifying a change, documenting an architecture, running parallel workers, publishing a site or collecting decisions. They install separately, so you only add what you use.
 
-> Last updated: 2026-11-08
+> Last updated: 2026-11-12
 
 ## Installation
 
@@ -26,6 +26,7 @@ Restart Claude Code after installing a plugin. Skills distributed on their own (
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Ideation sessions backed by 40+ documented methods |
 | [cloudflare-static-publish](skills/cloudflare-static-publish/) | Skill | 1.0.0 | Static sites on Cloudflare with deploy, login protection and DNS |
 | [open-questions](skills/open-questions/) | Skill | 1.0.0 | Open questions of the current work as a page that people answer one at a time |
+| [pr-review-board](skills/pr-review-board/) | Skill | 1.0.0 | Open PRs grouped by review decision as a colored board, in the browser and in the terminal |
 
 ## Plugins
 
@@ -82,6 +83,14 @@ Collects what is still undecided in the current work, such as gaps, assumptions 
 - **Helps with**: planning and review moments where several decisions pile up. They get answered calmly and in one place, instead of in a long chat message.
 - **Requires**: Claude Code signed in with `/login` on a claude.ai plan with Artifacts. Without the page's storage, answers can still be copied back by hand.
 
+### pr-review-board
+
+Lists the open pull requests of a repository grouped by review decision: not reviewed, changes requested, approved. It writes a self-contained HTML board with a stacked bar of the three groups, one column per group and a card per PR (author, age, CI status, reviewers and their verdicts, labels, draft and conflict flags), with the PRs that wait for you highlighted and filters by author and search. The terminal gets the same groups as a Markdown summary, with shapes and block characters standing in for the colors, plus a short paragraph on what to look at first.
+
+- **Helps with**: the daily "what is waiting on me, what can be merged, what is stuck" question, without opening each PR.
+- **Start with**: ask for the open PRs, a PR board or what is awaiting your review. Claude uses the skill on its own when the request fits.
+- **Requires**: Node.js 18+ and the GitHub CLI (`gh`) signed in. Works offline from a saved `gh pr list --json` export.
+
 ## Contributing
 
 How the repository is organized and how to release a new version is in [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -101,3 +110,4 @@ How the repository is organized and how to release a new version is in [CONTRIBU
 - Updated: 2026-11-08 - Added the open-questions skill 1.0.0
 - Updated: 2026-11-08 - Rewrote the README around what each plugin and skill does; moved layout and release steps to CONTRIBUTING.md
 - Updated: 2026-11-08 - Added the Portuguese version README.pt-BR.md and language links
+- Updated: 2026-11-12 - Added the pr-review-board skill 1.0.0

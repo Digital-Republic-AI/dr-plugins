@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: awaiting-my-review
+expected_outcome: |
+  The reply, in English, shows the 6 PRs in three groups (4 not reviewed, 1 changes requested, 1 approved), says that #88 and #93 await pedro-alves (and not #92, whose request is to a team, nor #91, which pedro already commented on), notes that #85 has changes requested by pedro and is stale with failing CI, marks #90 as pedro's own approved PR, and writes a colored HTML board.
+context:
+  scaffold_script: place-files.sh
