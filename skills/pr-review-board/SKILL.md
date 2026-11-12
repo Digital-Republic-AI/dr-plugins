@@ -77,7 +77,7 @@ Relay the summary the script printed, in this order and without reformatting it 
 1. The title line with the total.
 2. The code block with the stacked bar and the legend line (the block characters only line up in a code block; keep it as one).
 3. The stats line (awaiting you, yours, approved and green, CI failing, stale, drafts).
-4. The three group tables, in the script's order: not reviewed, changes requested, approved. Keep the shapes in the headings and the marks in the cells; they are the only grouping cue a terminal has. Do not drop a column to save width.
+4. The three group tables, in the script's order: not reviewed, changes requested, approved. Keep the shapes in the headings and the marks in the cells; they are the only grouping cue a terminal has. Do not drop a column to save width. The age column shows days since the PR was opened; a stale PR also shows how many days it has been idle, and the two are different numbers (a PR can be 20 days old and 10 days idle).
 
 Then add one short paragraph (two to four sentences) that reads the board for the user, in this order of usefulness: what waits for them by name, what is approved with green checks and can be merged, what is stuck (stale, conflicting, approved but with failing checks). Name the PRs by number and title. Do not invent a reason a PR is stuck beyond what the badges show.
 

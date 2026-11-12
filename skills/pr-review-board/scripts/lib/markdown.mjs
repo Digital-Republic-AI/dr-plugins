@@ -35,7 +35,7 @@ export function stackedBar(totals, width = BAR_WIDTH) {
 
 function ageCell(pr, t) {
   const age = pr.daysOpen === null ? '?' : t.days(pr.daysOpen);
-  return pr.badges.includes('stale') ? `${age} !` : age;
+  return pr.badges.includes('stale') ? `${age} · ${t.idleShort} ${t.days(pr.daysIdle)}` : age;
 }
 
 function reviewsCell(pr, t) {
