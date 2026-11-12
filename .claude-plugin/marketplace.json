@@ -52,6 +52,19 @@
       "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
     },
     {
+      "name": "notes",
+      "description": "Post-it notes in Claude Code: /note <text> pins a note to a board saved across sessions, shown as colored cards in a side pane with time, project and a delete button. /note lista and /note rm <n> list and delete from the chat.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./plugins/notes",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["notes", "post-it", "sticky-notes", "pane", "productivity"]
+    },
+    {
       "name": "tsc-report",
       "description": "Runs the TypeScript type checker (the project's typecheck script, tsc or tsc -b), saves the raw output and two grouped JSON reports (by error code and by file) to ./tsc-reports/<timestamp>/, and answers with tables plus one paragraph that assesses the current state and recommends the first action. Detects multiple tsconfigs and workspaces. Skill only.",
       "version": "1.0.0",

@@ -4,7 +4,7 @@ English | [Português](README.pt-BR.md)
 
 Digital Republic's marketplace of Claude Code plugins and skills. Each entry covers one recurring part of software work, such as specifying a change, documenting an architecture, running parallel workers, publishing a site or collecting decisions. They install separately, so you only add what you use.
 
-> Last updated: 2026-11-08
+> Last updated: 2026-11-12
 
 ## Installation
 
@@ -21,6 +21,7 @@ Restart Claude Code after installing a plugin. Skills distributed on their own (
 |---|---|---|---|
 | [spek](plugins/spek/) | Plugin | 0.6.0 | Spec-driven development that starts from the code you already have |
 | [fleet](plugins/fleet/) | Plugin | 0.2.0 | A lead session that runs worker Claude Code teammates in split panes |
+| [notes](plugins/notes/) | Plugin | 0.1.0 | Post-it notes from `/note <text>`, shown on a board in a side pane |
 | [c4-codebase](skills/c4-codebase/) | Skill | 1.0.0 | Architecture documentation and a C4 model reverse-engineered from a repository |
 | [tsc-report](skills/tsc-report/) | Skill | 1.0.0 | TypeScript type check with grouped reports and a recommended first action |
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Ideation sessions backed by 40+ documented methods |
@@ -44,6 +45,14 @@ Turns a Claude Code session into a lead that orchestrates worker teammates, each
 - **Helps with**: tasks that split into independent parts, such as several modules, several fixes or a migration in batches, where one session working in sequence is the bottleneck.
 - **Start with**: `/fleet`.
 - **Requires**: agent teams enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`) and a team mode with panes (`tmux`, `iterm2` or `auto`).
+
+### notes
+
+Keeps quick notes as post-its. `/note Revisar o PR do checkout` adds a colored card to a board that opens in a pane beside the chat, with the note's number, time and project folder. Notes are saved across sessions. `/note lista` lists them in the chat, `/note rm 3` deletes note #3, and each card has its own delete button.
+
+- **Helps with**: ideas, reminders and to-dos that come up mid-task and would otherwise get lost in the scrollback or sent to the model by mistake.
+- **Start with**: `/note <text>`, or `/note` to open the board.
+- **Requires**: nothing beyond Claude Code.
 
 ## Skills
 
@@ -101,3 +110,4 @@ How the repository is organized and how to release a new version is in [CONTRIBU
 - Updated: 2026-11-08 - Added the open-questions skill 1.0.0
 - Updated: 2026-11-08 - Rewrote the README around what each plugin and skill does; moved layout and release steps to CONTRIBUTING.md
 - Updated: 2026-11-08 - Added the Portuguese version README.pt-BR.md and language links
+- Updated: 2026-11-12 - Added the notes plugin 0.1.0

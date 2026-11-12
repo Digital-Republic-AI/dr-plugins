@@ -1,0 +1,13 @@
+{
+  "name": "notes",
+  "displayName": "Notes",
+  "version": "0.1.0",
+  "description": "Post-it notes: /note <text> pins a note to a board, shown in a side pane",
+  "author": {
+    "name": "Thiago Montini",
+    "email": "thiagomontini@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["notes", "post-it", "sticky-notes", "pane", "productivity"],
+  "types": "./types/index.d.ts"
+}

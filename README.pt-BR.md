@@ -4,7 +4,7 @@
 
 Marketplace de plugins e skills para Claude Code da Digital Republic. Cada item cobre uma parte recorrente do trabalho de software, como especificar uma mudança, documentar uma arquitetura, rodar workers em paralelo, publicar um site ou levantar decisões. A instalação é separada por item, então você adiciona só o que vai usar.
 
-> Última atualização: 2026-11-08
+> Última atualização: 2026-11-12
 
 ## Instalação
 
@@ -21,6 +21,7 @@ Reinicie o Claude Code depois de instalar um plugin. Skills distribuídas sozinh
 |---|---|---|---|
 | [spek](plugins/spek/) | Plugin | 0.6.0 | Desenvolvimento guiado por especificação que parte do código que já existe |
 | [fleet](plugins/fleet/) | Plugin | 0.2.0 | Uma sessão líder que coordena workers do Claude Code em painéis divididos |
+| [notes](plugins/notes/) | Plugin | 0.1.0 | Post-its criados com `/note <texto>`, num quadro em painel lateral |
 | [c4-codebase](skills/c4-codebase/) | Skill | 1.0.0 | Documentação de arquitetura e modelo C4 extraídos de um repositório |
 | [tsc-report](skills/tsc-report/) | Skill | 1.0.0 | Checagem de tipos do TypeScript com relatórios agrupados e a primeira ação recomendada |
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Sessões de ideação apoiadas em mais de 40 métodos documentados |
@@ -44,6 +45,14 @@ Transforma uma sessão do Claude Code em líder que coordena workers, cada um no
 - **Ajuda quando**: a tarefa se divide em partes independentes, como vários módulos, várias correções ou uma migração em lotes, e uma sessão trabalhando em sequência vira o gargalo.
 - **Comece com**: `/fleet`.
 - **Requer**: agent teams ativado (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`) e um modo de equipe com painéis (`tmux`, `iterm2` ou `auto`).
+
+### notes
+
+Guarda anotações rápidas como post-its. `/note Revisar o PR do checkout` cria um cartão colorido num quadro que abre num painel ao lado do chat, com o número da nota, o horário e a pasta do projeto. As notas ficam salvas entre sessões. `/note lista` lista as notas no chat, `/note rm 3` apaga a nota #3, e cada cartão tem seu próprio botão de apagar.
+
+- **Ajuda quando**: surgem ideias, lembretes e pendências no meio de uma tarefa, que se perderiam no histórico ou iriam para o modelo sem querer.
+- **Comece com**: `/note <texto>`, ou `/note` para abrir o quadro.
+- **Requer**: só o Claude Code.
 
 ## Skills
 
@@ -89,3 +98,4 @@ A organização do repositório e o processo de lançar uma versão nova estão 
 ## Histórico de alterações
 
 - Criado: 2026-11-08 - Versão em português do README.md
+- Atualizado: 2026-11-12 - Adicionado o plugin notes 0.1.0
