@@ -27,7 +27,7 @@ Reinicie o Claude Code depois de instalar um plugin. Skills distribuídas sozinh
 | [brainstorm-ideias](skills/brainstorm-ideias/) | Skill | 1.0.0 | Sessões de ideação apoiadas em mais de 40 métodos documentados |
 | [cloudflare-static-publish](skills/cloudflare-static-publish/) | Skill | 1.0.0 | Sites estáticos na Cloudflare com deploy, proteção por login e DNS |
 | [open-questions](skills/open-questions/) | Skill | 1.0.0 | As dúvidas em aberto do trabalho numa página respondida uma pergunta por vez |
-| [pr-review-board](skills/pr-review-board/) | Skill | 1.0.0 | PRs abertas agrupadas por decisão de review num board colorido, no navegador e no terminal |
+| [pr-review-board](skills/pr-review-board/) | Skill | 1.1.0 | PRs abertas agrupadas por decisão de review num board colorido, no navegador e no terminal |
 
 ## Plugins
 
@@ -109,3 +109,5 @@ A organização do repositório e o processo de lançar uma versão nova estão 
 - Criado: 2026-11-08 - Versão em português do README.md
 - Atualizado: 2026-11-12 - Adicionada a skill pr-review-board 1.0.0
 - Atualizado: 2026-11-12 - Adicionado o plugin notes 0.1.0
+- Atualizado: 2026-11-12 - pr-review-board atualizada para 1.1.0: na máquina local o board abre no navegador por um endereço localhost
+- Atualizado: 2026-11-12 - pr-review-board 1.1.0: novo visual do board HTML (colunas tingidas por decisão, lista do que pede atenção, filtros fixos)

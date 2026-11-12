@@ -201,7 +201,7 @@
     {
       "name": "pr-review-board",
       "description": "Lists the open pull requests of a GitHub repository grouped by review decision (not reviewed, changes requested, approved) as a colored board: a self-contained HTML page with a stacked bar, one column per group, a card per PR (author, age, CI, reviewers, labels, draft and conflict flags) and the PRs awaiting the current user highlighted, plus a Markdown summary with the same groups for the terminal. Reads live data through gh or a saved gh pr list export. Skill only.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "Thiago Montini",
         "email": "thiagomontini@gmail.com"

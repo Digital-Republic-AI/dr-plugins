@@ -99,7 +99,8 @@ export function renderMarkdown(board, { lang = 'en', paths = {} } = {}) {
     }
     lines.push('');
   }
-  if (paths.html || paths.json) {
+  if (paths.url || paths.html || paths.json) {
+    if (paths.url) lines.push(`${t.files.url}: ${paths.url}`);
     if (paths.html) lines.push(`${t.files.html}: ${paths.html}`);
     if (paths.json) lines.push(`${t.files.json}: ${paths.json}`);
   }
