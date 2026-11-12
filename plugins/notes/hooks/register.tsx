@@ -94,14 +94,19 @@ export const register: Register = on => {
         const opened = await openBoard($)
         if (opened.isPlaced) return { text: OPENED }
         const list = listText(readNotes(await $.store.get(STORE_KEY)))
-        return { text: `${list}
-
-O quadro não aparece nesta tela, então as notas estão listadas aqui.` }
+        return {
+          text: `${list}\n\nO quadro não aparece nesta tela, então as notas estão listadas aqui. Motivo: ${opened.reason}`,
+          context: [`notes: the board pane was not placed: ${opened.reason}`],
+        }
       }
       case 'add': {
         const note = await addNote($, cmd.text)
         const opened = await openBoard($)
-        return { text: opened.isPlaced ? `Nota #${note.id} anotada.` : `Nota #${note.id} anotada. ${NO_PANE}` }
+        if (opened.isPlaced) return { text: `Nota #${note.id} anotada.` }
+        return {
+          text: `Nota #${note.id} anotada. ${NO_PANE} Motivo: ${opened.reason}`,
+          context: [`notes: the board pane was not placed: ${opened.reason}`],
+        }
       }
       case 'remove':
         return { text: (await removeNote($, cmd.id)) ? `Nota #${cmd.id} apagada.` : `Não existe nota #${cmd.id}.` }
