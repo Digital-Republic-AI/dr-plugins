@@ -85,7 +85,7 @@ Reúne o que ainda está indefinido no trabalho atual, como lacunas, suposiçõe
 
 ### pr-review-board
 
-Lista as pull requests abertas de um repositório agrupadas por decisão de review: não revisadas, modificações solicitadas e aprovadas. Gera um board HTML autocontido com uma barra empilhada dos três grupos, uma coluna por grupo e um card por PR (autor, idade, estado do CI, revisores e seus vereditos, labels, marcas de rascunho e de conflito), com destaque para as PRs que esperam a sua revisão e filtros por autor e busca. O terminal recebe os mesmos grupos como um resumo em Markdown, com formas e blocos no lugar das cores, mais um parágrafo curto sobre o que olhar primeiro.
+Lista as pull requests abertas de um repositório agrupadas por decisão de review: não revisadas, modificações solicitadas e aprovadas. Gera um board HTML autocontido com uma barra empilhada dos três grupos, uma coluna por grupo e um card por PR (autor, idade, estado do CI, revisores e seus vereditos, labels, marcas de rascunho e de conflito), com destaque para as PRs que esperam a sua revisão e filtros por autor e busca. Em sessão remota sem navegador, o board é publicado como Artifact do claude.ai. O terminal recebe os mesmos grupos como um resumo em Markdown, com formas e blocos no lugar das cores, mais um parágrafo curto sobre o que olhar primeiro.
 
 - **Ajuda quando**: a pergunta diária é "o que está esperando por mim, o que já pode ser mesclado, o que travou", sem abrir PR por PR.
 - **Comece com**: `/pr-review-board:pr-review-board`, opcionalmente com um repositório (`owner/name`), `@me` para as suas PRs ou termos de busca do gh como `label:backend`. O Claude também usa a skill sozinho quando você pede as PRs abertas ou o que está aguardando a sua revisão.
