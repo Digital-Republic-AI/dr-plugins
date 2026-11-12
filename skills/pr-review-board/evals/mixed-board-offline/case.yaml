@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: mixed-board-offline
+expected_outcome: |
+  The reply, in Portuguese, shows the 10 PRs in three groups with the right counts (5 not reviewed, 2 changes requested, 3 approved), a stacked bar and a shape per group, marks #398 and #412 as awaiting marina-dev, flags the draft, the conflict and the failing CI, and writes a colored HTML board whose path is given. A short paragraph says what to look at first.
+context:
+  scaffold_script: place-files.sh

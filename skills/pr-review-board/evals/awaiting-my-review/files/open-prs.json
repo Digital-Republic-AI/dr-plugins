@@ -1,0 +1,396 @@
+[
+  {
+    "number": 88,
+    "title": "Lazy-load product gallery images",
+    "author": {
+      "id": "U_lucas-m",
+      "is_bot": false,
+      "login": "lucas-m",
+      "name": "Lucas M"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-07T12:00:00Z",
+    "updatedAt": "2026-11-10T08:00:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [],
+    "reviewRequests": [
+      {
+        "__typename": "User",
+        "login": "pedro-alves",
+        "name": "pedro-alves"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_frontend",
+        "name": "frontend",
+        "description": "",
+        "color": "1d76db"
+      },
+      {
+        "id": "L_performance",
+        "name": "performance",
+        "description": "",
+        "color": "c2e0c6"
+      }
+    ],
+    "headRefName": "perf/gallery-lazy-load",
+    "baseRefName": "main",
+    "additions": 120,
+    "deletions": 35,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/88"
+  },
+  {
+    "number": 91,
+    "title": "Replace moment with date-fns in order history",
+    "author": {
+      "id": "U_ana-ribeiro",
+      "is_bot": false,
+      "login": "ana-ribeiro",
+      "name": "Ana Ribeiro"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-09T09:30:00Z",
+    "updatedAt": "2026-11-11T16:00:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [
+      {
+        "id": "R_pedro-alvesCO",
+        "author": {
+          "login": "pedro-alves"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-11T16:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "COMMENTED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_frontend",
+        "name": "frontend",
+        "description": "",
+        "color": "1d76db"
+      },
+      {
+        "id": "L_tech-debt",
+        "name": "tech-debt",
+        "description": "",
+        "color": "e4e669"
+      }
+    ],
+    "headRefName": "chore/date-fns-order-history",
+    "baseRefName": "main",
+    "additions": 210,
+    "deletions": 260,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/91"
+  },
+  {
+    "number": 85,
+    "title": "Checkout: show installment options for BRL",
+    "author": {
+      "id": "U_lucas-m",
+      "is_bot": false,
+      "login": "lucas-m",
+      "name": "Lucas M"
+    },
+    "isDraft": false,
+    "createdAt": "2026-10-27T14:00:00Z",
+    "updatedAt": "2026-10-31T10:00:00Z",
+    "reviewDecision": "CHANGES_REQUESTED",
+    "latestReviews": [
+      {
+        "id": "R_pedro-alvesCH",
+        "author": {
+          "login": "pedro-alves"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-10-31T10:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "CHANGES_REQUESTED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_checkout",
+        "name": "checkout",
+        "description": "",
+        "color": "5319e7"
+      }
+    ],
+    "headRefName": "feat/brl-installments",
+    "baseRefName": "main",
+    "additions": 340,
+    "deletions": 20,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/85"
+  },
+  {
+    "number": 92,
+    "title": "Fix focus trap in the cart drawer",
+    "author": {
+      "id": "U_ana-ribeiro",
+      "is_bot": false,
+      "login": "ana-ribeiro",
+      "name": "Ana Ribeiro"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-10T11:00:00Z",
+    "updatedAt": "2026-11-10T11:00:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [],
+    "reviewRequests": [
+      {
+        "__typename": "Team",
+        "name": "Frontend Core",
+        "slug": "frontend-core"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_a11y",
+        "name": "a11y",
+        "description": "",
+        "color": "0e8a16"
+      }
+    ],
+    "headRefName": "fix/cart-drawer-focus",
+    "baseRefName": "main",
+    "additions": 28,
+    "deletions": 6,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": null,
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/92"
+  },
+  {
+    "number": 90,
+    "title": "Upgrade Next.js to 15.2",
+    "author": {
+      "id": "U_pedro-alves",
+      "is_bot": false,
+      "login": "pedro-alves",
+      "name": "Pedro Alves"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-08T10:00:00Z",
+    "updatedAt": "2026-11-11T12:00:00Z",
+    "reviewDecision": "APPROVED",
+    "latestReviews": [
+      {
+        "id": "R_lucas-mAP",
+        "author": {
+          "login": "lucas-m"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-11T12:00:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [],
+    "labels": [
+      {
+        "id": "L_dependencies",
+        "name": "dependencies",
+        "description": "",
+        "color": "0366d6"
+      }
+    ],
+    "headRefName": "chore/next-15-2",
+    "baseRefName": "main",
+    "additions": 410,
+    "deletions": 380,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/90"
+  },
+  {
+    "number": 93,
+    "title": "Add skeleton loaders to the search results",
+    "author": {
+      "id": "U_rafael-costa",
+      "is_bot": false,
+      "login": "rafael-costa",
+      "name": "Rafael Costa"
+    },
+    "isDraft": false,
+    "createdAt": "2026-11-11T08:00:00Z",
+    "updatedAt": "2026-11-11T18:30:00Z",
+    "reviewDecision": "REVIEW_REQUIRED",
+    "latestReviews": [
+      {
+        "id": "R_ana-ribeiroAP",
+        "author": {
+          "login": "ana-ribeiro"
+        },
+        "authorAssociation": "MEMBER",
+        "body": "",
+        "submittedAt": "2026-11-11T18:30:00Z",
+        "includesCreatedEdit": false,
+        "reactionGroups": [],
+        "state": "APPROVED"
+      }
+    ],
+    "reviewRequests": [
+      {
+        "__typename": "User",
+        "login": "pedro-alves",
+        "name": "pedro-alves"
+      }
+    ],
+    "labels": [
+      {
+        "id": "L_frontend",
+        "name": "frontend",
+        "description": "",
+        "color": "1d76db"
+      }
+    ],
+    "headRefName": "feat/search-skeletons",
+    "baseRefName": "main",
+    "additions": 75,
+    "deletions": 4,
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "lint",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-11T10:00:00Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/acme/storefront-web/actions/runs/7",
+        "name": "e2e",
+        "startedAt": "2026-11-11T09:55:00Z",
+        "status": "COMPLETED",
+        "workflowName": "CI"
+      }
+    ],
+    "mergeable": "MERGEABLE",
+    "url": "https://github.com/acme/storefront-web/pull/93"
+  }
+]

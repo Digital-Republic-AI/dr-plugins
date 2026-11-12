@@ -19,7 +19,15 @@
       },
       "source": "./plugins/spek",
       "category": "development",
-      "keywords": ["spec-driven-development", "sdd", "brownfield", "planning", "workflow", "specify", "tasks"]
+      "keywords": [
+        "spec-driven-development",
+        "sdd",
+        "brownfield",
+        "planning",
+        "workflow",
+        "specify",
+        "tasks"
+      ]
     },
     {
       "name": "c4-codebase",
@@ -31,12 +39,22 @@
       },
       "source": "./",
       "strict": false,
-      "skills": ["./skills/c4-codebase"],
+      "skills": [
+        "./skills/c4-codebase"
+      ],
       "homepage": "https://github.com/Digital-Republic-AI/c4-codebase-skill",
       "repository": "https://github.com/Digital-Republic-AI/c4-codebase-skill",
       "license": "MIT",
       "category": "development",
-      "keywords": ["c4", "structurizr", "architecture", "reverse-engineering", "documentation", "diagrams", "skill"]
+      "keywords": [
+        "c4",
+        "structurizr",
+        "architecture",
+        "reverse-engineering",
+        "documentation",
+        "diagrams",
+        "skill"
+      ]
     },
     {
       "name": "fleet",
@@ -49,7 +67,16 @@
       "source": "./plugins/fleet",
       "license": "MIT",
       "category": "development",
-      "keywords": ["orchestration", "agent-teams", "workers", "parallel", "panes", "status", "task-plan", "markdown"]
+      "keywords": [
+        "orchestration",
+        "agent-teams",
+        "workers",
+        "parallel",
+        "panes",
+        "status",
+        "task-plan",
+        "markdown"
+      ]
     },
     {
       "name": "notes",
@@ -74,10 +101,20 @@
       },
       "source": "./",
       "strict": false,
-      "skills": ["./skills/tsc-report"],
+      "skills": [
+        "./skills/tsc-report"
+      ],
       "license": "MIT",
       "category": "development",
-      "keywords": ["typescript", "tsc", "typecheck", "type-errors", "report", "diagnostics", "skill"]
+      "keywords": [
+        "typescript",
+        "tsc",
+        "typecheck",
+        "type-errors",
+        "report",
+        "diagnostics",
+        "skill"
+      ]
     },
     {
       "name": "brainstorm-ideias",
@@ -89,10 +126,22 @@
       },
       "source": "./",
       "strict": false,
-      "skills": ["./skills/brainstorm-ideias"],
+      "skills": [
+        "./skills/brainstorm-ideias"
+      ],
       "license": "MIT",
       "category": "productivity",
-      "keywords": ["brainstorm", "ideation", "innovation", "creativity", "design-thinking", "jtbd", "blue-ocean", "facilitation", "skill"]
+      "keywords": [
+        "brainstorm",
+        "ideation",
+        "innovation",
+        "creativity",
+        "design-thinking",
+        "jtbd",
+        "blue-ocean",
+        "facilitation",
+        "skill"
+      ]
     },
     {
       "name": "cloudflare-static-publish",
@@ -104,10 +153,24 @@
       },
       "source": "./",
       "strict": false,
-      "skills": ["./skills/cloudflare-static-publish"],
+      "skills": [
+        "./skills/cloudflare-static-publish"
+      ],
       "license": "MIT",
       "category": "development",
-      "keywords": ["cloudflare", "workers", "pages", "static-site", "deploy", "wrangler", "zero-trust", "access", "one-time-pin", "dns", "skill"]
+      "keywords": [
+        "cloudflare",
+        "workers",
+        "pages",
+        "static-site",
+        "deploy",
+        "wrangler",
+        "zero-trust",
+        "access",
+        "one-time-pin",
+        "dns",
+        "skill"
+      ]
     },
     {
       "name": "open-questions",
@@ -119,10 +182,47 @@
       },
       "source": "./",
       "strict": false,
-      "skills": ["./skills/open-questions"],
+      "skills": [
+        "./skills/open-questions"
+      ],
       "license": "MIT",
       "category": "productivity",
-      "keywords": ["artifacts", "open-questions", "decisions", "validation", "review", "planning", "ux", "skill"]
+      "keywords": [
+        "artifacts",
+        "open-questions",
+        "decisions",
+        "validation",
+        "review",
+        "planning",
+        "ux",
+        "skill"
+      ]
+    },
+    {
+      "name": "pr-review-board",
+      "description": "Lists the open pull requests of a GitHub repository grouped by review decision (not reviewed, changes requested, approved) as a colored board: a self-contained HTML page with a stacked bar, one column per group, a card per PR (author, age, CI, reviewers, labels, draft and conflict flags) and the PRs awaiting the current user highlighted, plus a Markdown summary with the same groups for the terminal. Reads live data through gh or a saved gh pr list export. Skill only.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Thiago Montini",
+        "email": "thiagomontini@gmail.com"
+      },
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/pr-review-board"
+      ],
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "pull-requests",
+        "code-review",
+        "github",
+        "gh",
+        "board",
+        "dashboard",
+        "review-status",
+        "skill"
+      ]
     }
   ]
 }
