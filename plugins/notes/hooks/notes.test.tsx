@@ -90,7 +90,7 @@ test('where no pane is drawn, /note lists the notes in the chat', async ($, on) 
   engine(on, {}, false)
   await $.session.start({ cwd: '/', surface: 'mobile', isInteractive: true })
 
-  expect((await note($, 'ver no cli tambem')).text).toMatch(/^Nota #1 anotada\. O quadro não cabe aqui/)
+  expect((await note($, 'ver no cli tambem')).text).toMatch(/^Nota #1 anotada\. Esta tela não mostra painéis/)
   expect((await note($, '')).text).toMatch(/^#1 ver no cli tambem .*\n\nO quadro não aparece nesta tela/)
 })
 

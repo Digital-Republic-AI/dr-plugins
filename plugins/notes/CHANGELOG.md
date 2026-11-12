@@ -11,8 +11,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-- `/note` no longer says the board opened where no pane can show (the mobile app, a terminal too
-  narrow). There, `/note` and `/note lista` draw the post-it cards in the chat instead, and
+- `/note` no longer says the board opened where no pane can show (the mobile app). There,
+  `/note` and `/note lista` draw the post-it cards in the chat instead, and
   `/note <text>` says where to see them.
 
 ## [0.1.0] - 2026-11-12

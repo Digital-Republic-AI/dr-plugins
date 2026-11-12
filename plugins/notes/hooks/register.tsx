@@ -10,7 +10,7 @@ const STORE_KEY = 'notes'
 const CARD_COLUMNS = 26
 const OPENED = 'Quadro de post-its aberto.'
 // Said where the surface draws no pane, or the terminal is too narrow for one.
-const NO_PANE = 'O quadro não cabe aqui (esta tela não mostra painéis ou o terminal está estreito). Use /note lista para ver as notas.'
+const NO_PANE = 'Esta tela não mostra painéis. Use /note lista para ver as notas.'
 
 // Change the tag when a note's fields change: it declines what an earlier
 // version kept in the session's state.

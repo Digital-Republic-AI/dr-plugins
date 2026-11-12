@@ -25,7 +25,7 @@ Restart Claude Code after installing.
 | `/note rm <n>` | Deletes note `#n` (`/note apagar <n>` works too) |
 | `/note ajuda` | Shows these commands |
 
-The board opens in a pane where the screen has room for one: the terminal, the desktop app and VS Code. The mobile app shows no panes, and neither does a terminal under about 110 columns. There, `/note` and `/note lista` draw the same cards in the chat.
+The board opens in a pane where the screen has room for one: the terminal, the desktop app and VS Code. The mobile app shows no panes. There, `/note` and `/note lista` draw the same cards in the chat.
 
 On the board, `nova` (hotkey `n`) opens a field to type a note without leaving the pane, on surfaces that draw text fields. Each note has an `apagar` button that deletes it.
 
