@@ -88,7 +88,7 @@ Collects what is still undecided in the current work, such as gaps, assumptions 
 Lists the open pull requests of a repository grouped by review decision: not reviewed, changes requested, approved. It writes a self-contained HTML board with a stacked bar of the three groups, one column per group and a card per PR (author, age, CI status, reviewers and their verdicts, labels, draft and conflict flags), with the PRs that wait for you highlighted and filters by author and search. The terminal gets the same groups as a Markdown summary, with shapes and block characters standing in for the colors, plus a short paragraph on what to look at first.
 
 - **Helps with**: the daily "what is waiting on me, what can be merged, what is stuck" question, without opening each PR.
-- **Start with**: ask for the open PRs, a PR board or what is awaiting your review. Claude uses the skill on its own when the request fits.
+- **Start with**: `/pr-review-board:pr-review-board`, optionally with a repository (`owner/name`), `@me` for your own PRs or gh search terms such as `label:backend`. Claude also uses the skill on its own when you ask for the open PRs or what is awaiting your review.
 - **Requires**: Node.js 18+ and the GitHub CLI (`gh`) signed in. Works offline from a saved `gh pr list --json` export.
 
 ## Contributing

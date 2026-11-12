@@ -3,6 +3,7 @@ name: pr-review-board
 description: Lists the open pull requests of a GitHub repository grouped by review decision (not reviewed, changes requested, approved) as a colored board, with a stacked bar of the three groups, one column per group, a card per PR (author, age, CI status, reviewers and their verdicts, labels, draft and conflict flags) and the PRs that wait for the current user highlighted. Writes a self-contained HTML board that opens in the browser and prints a Markdown summary with the same groups for the terminal. Use it whenever the user wants to see the open PRs, who reviewed what, what is waiting for review or for them, what is approved and ready to merge, or asks for a PR board, dashboard, overview or status, even without saying "review" or "board", e.g. "mostra as PRs abertas", "como estão as PRs", "o que está esperando minha revisão", "quais PRs já foram aprovadas", "board de PRs", "PRs agrupadas por status", "lista as PRs de um jeito mais visual". Not for reviewing, merging or commenting on a PR; it only shows the state.
 license: MIT
 compatibility: Requires Node.js 18+ and the GitHub CLI (gh) signed in to github.com for live data. Works offline from a saved `gh pr list --json` export.
+argument-hint: "[owner/repo ...] [@me] [no-drafts] [gh search terms]"
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/*)
 metadata:
   version: "1.0.0"
@@ -53,6 +54,22 @@ The script applies the same rule GitHub shows on the PR page, from `reviewDecisi
 Badges tell the cases apart inside the "not reviewed" column: `commented` (someone looked without deciding), `partially approved` (approved by someone, but the branch still requires review), `draft`, `awaiting you` (the user is a requested reviewer), `stale` (no activity for the stale window), `conflicts`. CI comes from the check rollup: passing, failing, running or none. `references/review-states.md` has the full mapping and the gh fields behind it, for when a user asks why a PR landed where it did.
 
 ## Workflow
+
+### 0. Arguments from a direct invocation
+
+The user can call this skill as a slash command (`/pr-review-board`, or `/pr-review-board:pr-review-board` when installed from the catalog). Whatever follows the command arrives as `$ARGUMENTS`; map each token to the script instead of asking what they meant:
+
+| Token | Becomes |
+|-------|---------|
+| `owner/name` (contains a slash) | `--repo owner/name`, one per token |
+| `@me`, `mine`, `minhas` | `--author @me` |
+| `no-drafts`, `sem-rascunhos` | `--no-drafts` |
+| `--something` | passed through as is (the script rejects what it does not know) |
+| anything else | joined into one `--search` query, so `label:backend base:main` works like in gh |
+
+Arguments: $ARGUMENTS
+
+Empty arguments mean the full board of the current repository.
 
 ### 1. Scope
 
