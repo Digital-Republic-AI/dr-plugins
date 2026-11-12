@@ -11,10 +11,12 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { buildBoard } from './lib/classify.mjs';
+import { BOARD_HTML_FILE, BOARD_JSON_FILE, SERVER_HOST } from './lib/constants.mjs';
 import { GhError, currentRepo, fetchOpenPrs, viewerLogin } from './lib/fetch.mjs';
 import { renderHtml } from './lib/html.mjs';
 import { supportedLanguages } from './lib/i18n.mjs';
 import { renderMarkdown } from './lib/markdown.mjs';
+import { serveBoard } from './lib/serve.mjs';
 
 const USAGE = `usage: pr-board.mjs [options]
   --repo OWNER/NAME   repository to read (repeatable); default: the repository of the current directory
@@ -27,7 +29,7 @@ const USAGE = `usage: pr-board.mjs [options]
   --no-drafts         leave draft PRs out
   --stale-days N      days without activity before a PR is flagged as stale (default: 7)
   --out DIR           where board.html and board.json are written (default: <tmp>/pr-review-board/<repo>)
-  --open              open board.html in the default browser
+  --open              serve the board on 127.0.0.1 and open its http:// URL in the default browser
   --json              print the board JSON instead of the Markdown summary
   --help              this text`;
 
@@ -72,11 +74,11 @@ function slug(text) {
   return text.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '').toLowerCase() || 'board';
 }
 
-function openInBrowser(file) {
+function openInBrowser(target) {
   const [command, args] =
-    process.platform === 'darwin' ? ['open', [file]]
-    : process.platform === 'win32' ? ['cmd', ['/c', 'start', '', file]]
-    : ['xdg-open', [file]];
+    process.platform === 'darwin' ? ['open', [target]]
+    : process.platform === 'win32' ? ['cmd', ['/c', 'start', '', target]]
+    : ['xdg-open', [target]];
   return new Promise((resolveOpen) => {
     let child;
     try {
@@ -160,21 +162,32 @@ async function main() {
 
   const outDir = resolve(options.out || join(tmpdir(), 'pr-review-board', slug(repos.join('+'))));
   mkdirSync(outDir, { recursive: true });
-  const htmlPath = join(outDir, 'board.html');
-  const jsonPath = join(outDir, 'board.json');
+  const htmlPath = join(outDir, BOARD_HTML_FILE);
+  const jsonPath = join(outDir, BOARD_JSON_FILE);
   writeFileSync(jsonPath, `${JSON.stringify(board, null, 2)}\n`);
   writeFileSync(htmlPath, renderHtml(board, { lang: options.lang }));
 
+  let url = null;
+  if (options.open) {
+    try {
+      ({ url } = await serveBoard(outDir));
+    } catch (error) {
+      warnings.push(`could not serve the board on ${SERVER_HOST} (${error.message}); opening the file instead, which lands in whatever app owns .html files`);
+    }
+  }
+
+  const paths = { html: htmlPath, json: jsonPath, url };
   if (options.json) {
-    console.log(JSON.stringify({ ...board, paths: { html: htmlPath, json: jsonPath } }, null, 2));
+    console.log(JSON.stringify({ ...board, paths }, null, 2));
   } else {
-    console.log(renderMarkdown(board, { lang: options.lang, paths: { html: htmlPath, json: jsonPath } }));
+    console.log(renderMarkdown(board, { lang: options.lang, paths }));
   }
   for (const warning of warnings) console.error(`WARNING: ${warning}`);
 
   if (options.open) {
-    const opened = await openInBrowser(htmlPath);
-    if (!opened) console.error(`WARNING: could not open a browser here; open ${htmlPath} by hand`);
+    const target = url ?? htmlPath;
+    const opened = await openInBrowser(target);
+    if (!opened) console.error(`WARNING: could not open a browser here; open ${target} by hand`);
   }
   return EXIT_OK;
 }

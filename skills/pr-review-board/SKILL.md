@@ -6,7 +6,7 @@ compatibility: Requires Node.js 18+ and the GitHub CLI (gh) signed in to github.
 argument-hint: "[owner/repo ...] [@me] [no-drafts] [gh search terms]"
 allowed-tools: Bash(node ${CLAUDE_SKILL_DIR}/scripts/*), Artifact
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # PR review board
@@ -29,7 +29,7 @@ node <skill>/scripts/pr-board.mjs [--repo OWNER/NAME]... [--lang pt|en] [--open]
 |--------|-------------|
 | `--repo OWNER/NAME` | The user names a repository, or several (repeat the flag; the board then prefixes each PR with its repo). Without it, the repository of the current directory. |
 | `--lang pt` / `--lang en` | Match the user's language. It sets the summary and the page. |
-| `--open` | The user is on their own machine: opens `board.html` in the default browser. Skip it in a remote or headless session (the script only warns, but there is nothing to open there); publish the page as an Artifact instead (see step 3). |
+| `--open` | The user is on their own machine: serves the board folder on `127.0.0.1` and opens the `http://` URL in the default browser. A URL and not the file, because a file opens in whatever app owns `.html`, often a code editor, and the user sees source instead of a board. A later run reuses the same server and URL; the server stops by itself after 30 idle minutes. If it cannot start, the script warns and opens the file instead. Skip `--open` in a remote or headless session (there is no browser to reach); publish the page as an Artifact instead (see step 3). |
 | `--author @me` | The user asks for their own PRs only. Any login works. |
 | `--search QUERY` | The user narrows by label, base branch or text: it is passed to `gh pr list --search` (for example `label:backend base:main`). |
 | `--no-drafts` | The user does not want drafts. By default drafts are shown, dimmed and last in their column. |
@@ -100,7 +100,7 @@ Then add one short paragraph (two to four sentences) that reads the board for th
 
 Close with where the board is:
 
-- **Local session (a browser can open files):** the path of `board.html`, and that it was opened when `--open` was used.
+- **Local session (the user has a browser on this machine):** the URL the summary prints (`Open at` / `Abrir em`) and that it was opened in the browser. Give the path of `board.html` only when the script warned that the server could not start.
 - **Remote or headless session (no browser for the user to reach the file):** publish `board.html` with the Artifact tool, without asking first, and give the link. Pass the file path as it is, with `icon: "board"` and a one-sentence description naming the repository; the page already follows the Artifact contract (title, color tokens on `:root`, dark mode, explicit body background). Republish to the same path on a later run so the link stays the same. If the Artifact tool is not available, give the file path and say the page can be downloaded and opened locally.
 
 The user asked for a visual board; a path they cannot open is not one.
@@ -117,4 +117,4 @@ Stop there. Do not review, comment on or merge anything unless the user asks nex
 
 ## Housekeeping
 
-`board.html` and `board.json` go to the temp directory by default, so nothing lands in the repository. With `--out` inside the project, mention once that the folder is a snapshot and should be ignored by git, and do not edit `.gitignore` on your own.
+`board.html` and `board.json` go to the temp directory by default, so nothing lands in the repository. With `--open`, the same folder also holds `server.json` (port and process of the running server, removed when it stops) and, only after an error, `server.log`; the server answers on `127.0.0.1` alone and serves nothing but `board.html` and `board.json`. With `--out` inside the project, mention once that the folder is a snapshot and should be ignored by git, and do not edit `.gitignore` on your own.
