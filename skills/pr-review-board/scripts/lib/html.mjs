@@ -81,7 +81,7 @@ function card(pr, t, lang, multiRepo) {
         </div>
         <a class="title" href="${esc(pr.url)}" target="_blank" rel="noopener">${esc(pr.title)}</a>
         <div class="meta">
-          <img class="avatar" src="https://avatars.githubusercontent.com/${esc(pr.author)}?s=40" alt="" loading="lazy" onerror="this.style.display='none'">
+          <span class="avatar" data-initial="${esc(pr.author.replace(/[^a-z0-9]/gi, '').charAt(0).toUpperCase() || '?')}"><img src="https://avatars.githubusercontent.com/${esc(pr.author)}?s=40" alt="" loading="lazy" onerror="this.remove()"></span>
           <span class="author">${esc(pr.author)}</span>
           <span class="branch" title="${esc(pr.headRefName)} → ${esc(pr.baseRefName)}">${esc(pr.headRefName)} <span class="arrow">→</span> ${esc(pr.baseRefName)}</span>
         </div>
@@ -234,7 +234,9 @@ header.page .sub { color: var(--muted); font-size: 13px; display: flex; flex-wra
 .meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); min-width: 0; max-width: 100%; }
 .card-top { min-width: 0; }
 .card-top .num { flex: none; }
-.avatar { width: 18px; height: 18px; border-radius: 50%; flex: none; }
+.avatar { position: relative; width: 18px; height: 18px; border-radius: 50%; flex: none; background: var(--border); color: var(--text); font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+.avatar::before { content: attr(data-initial); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .author { font-weight: 600; color: var(--text); }
 .branch { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; }
 .branch .arrow { color: var(--muted); }
